@@ -63,11 +63,11 @@ export function Showcase() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center mt-12 sm:mt-16">
+<div className="flex justify-center mt-16 sm:mt-20 px-4 sm:px-0">
   <Button
     onClick={scrollToCalendly}
     size="lg"
-    className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group"
+    className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full sm:w-auto"
   >
     Agenda tu llamada
     <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
