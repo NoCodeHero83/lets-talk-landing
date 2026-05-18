@@ -3,6 +3,7 @@ import { Hero } from "@/components/landing/hero"
 import { LogoCarousel } from "@/components/landing/logo-carousel"
 import { PainPoints } from "@/components/landing/pain-points"
 import { Differentiator } from "@/components/landing/differentiator"
+import { Showcase } from "@/components/landing/showcase"
 import { Process } from "@/components/landing/process"
 import { CaseStudies } from "@/components/landing/case-studies"
 import { Trust } from "@/components/landing/trust"
@@ -28,6 +29,7 @@ export default function Home() {
       <LogoCarousel />
       <PainPoints />
       <Differentiator />
+      <Showcase />
       <Process />
       <CaseStudies />
       <Trust />

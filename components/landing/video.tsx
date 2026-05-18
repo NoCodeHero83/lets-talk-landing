@@ -34,14 +34,14 @@ export function Video() {
           {/* Glow effect */}
           <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent blur-xl opacity-50 -z-10" />
           
-          <div className="relative aspect-video bg-card">
-            <iframe
-    src="https://player.vimeo.com/video/1192861005" 
-    style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none"}}
+<div className="relative aspect-[4/5] sm:aspect-[5/6] max-w-3xl mx-auto bg-card">
+  <iframe
+    src="https://player.vimeo.com/video/1192861005"
+    className="absolute inset-0 w-full h-full border-0"
     allowFullScreen
     title="No somos otra agencia de desarrollo. Te explicamos por qué"
-            />
-          </div>
+  />
+</div>
         </div>
       </div>
     </section>

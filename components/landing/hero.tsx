@@ -13,20 +13,20 @@ export function Hero() {
     calendlySection?.scrollIntoView({ behavior: "smooth" })
   }
 
-  const scrollToProcess = () => {
-    const processSection = document.getElementById("process")
-    processSection?.scrollIntoView({ behavior: "smooth" })
+  const scrollToShowcase = () => {
+    const showcaseSection = document.getElementById("showcase")
+    showcaseSection?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-transparent">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-8 sm:pt-12 bg-transparent">
       <div
         ref={ref}
         className={`relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="mb-8 sm:mb-10 flex justify-center">
+        <div className="mb-4 sm:mb-5 flex justify-center">
           <img
             src="/zerocode-logo-white.png"
             alt="Zerocode"
@@ -46,18 +46,18 @@ export function Hero() {
           <Button
             onClick={scrollToCalendly}
             size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full sm:w-auto"
+            className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full sm:w-auto"
           >
             Agenda tu llamada
             <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button
-            onClick={scrollToProcess}
+            onClick={scrollToShowcase}
             variant="outline"
             size="lg"
-            className="border-border/50 bg-secondary/50 hover:bg-secondary text-foreground px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 w-full sm:w-auto"
+            className="border-border-white/10 bg-white/5 hover:bg-white/10 text-white backdrop-blur-md px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:border-white/20  hover:scale-[1.02] shadow-lg shadow-black/20 w-full sm:w-auto"
           >
-            Ver proceso
+            Ver plataformas
             <ChevronDown className="ml-2 w-5 h-5" />
           </Button>
         </div>

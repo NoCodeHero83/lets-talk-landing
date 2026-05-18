@@ -41,7 +41,7 @@ export function Header() {
           {/* CTA Button */}
           <Button
             onClick={scrollToCalendly}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
+            className="bg-white hover:bg-white/90 text-black text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
           >
             <span className="hidden sm:inline">Agenda tu llamada de diagn&oacute;stico</span>
             <span className="sm:hidden">Agendar llamada</span>

@@ -6,22 +6,28 @@ import { ArrowRight } from "lucide-react"
 
 const projects = [
   {
-    title: "[Placeholder: Project 1 Title]",
-    description: "[Placeholder: Brief description of the project and its impact]",
-    tags: ["Tag 1", "Tag 2", "Tag 3"],
-    image: "/projects/LaterLifeTraining.png"
+    title: "Increscendo Fintech",
+    description: "De operación manual a fintech 100% digital en México. Construimos la plataforma completa de suscripción y préstamos. Duplicaron alcance, atrajeron inversionistas y escalaron ingresos hasta en un 200%.",
+    tags: ["Fintech", "Préstamos", "WebApp"],
+    image: "/projects/IncrescendoFintech.png"
   },
   {
-    title: "[Placeholder: Project 2 Title]",
-    description: "[Placeholder: Brief description of the project and its impact]",
-    tags: ["Tag 1", "Tag 2", "Tag 3"],
+    title: "Alianza Capital",
+    description: "De operaciones 100% manuales a fintech automatizada en 12 meses. Construimos portal, app móvil y gestión financiera. Hoy escalan clientes sin sumar personal operativo.",
+    tags: ["Fintech", "Inversiones", "AppMóvil"],
     image: "/projects/AlianzaCapital.png"
   },
   {
-    title: "[Placeholder: Project 3 Title]",
-    description: "[Placeholder: Brief description of the project and its impact]",
-    tags: ["Tag 1", "Tag 2", "Tag 3"],
-    image: "/projects/proyecto3.jpg"
+    title: "Later Life Training",
+    description: "De plataforma inestable a producto confiable en 6 meses. Reconstruimos backend, reservas, pagos y UX. Resultado: 8.000 USD mensuales y arquitectura lista para crecer.",
+    tags: ["Salud", "Clínicas", "WebApp"],
+    image: "/projects/LaterLifeTraining.png"
+  },
+  {
+    title: "Hulp",
+    description: "Construimos la app móvil de un marketplace de servicios desde cero. Hoy: 1.600 descargas, revenue constante y un mercado validado donde antes no había producto.",
+    tags: ["Servicios", "Marketplace", "AppMóvil"],
+    image: "/projects/Hulp.png"
   }
 ]
 
@@ -107,7 +113,7 @@ export function CaseStudies() {
                   onClick={scrollToCalendly}
                   className="p-0 h-auto text-primary hover:text-primary/80 hover:bg-transparent group/btn"
                 >
-                  [CTA: Ver caso de estudio]
+                  Ver caso de estudio
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </Button>
               </div>
