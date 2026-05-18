@@ -1,9 +1,15 @@
 "use client"
 
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 export function Showcase() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>()
+  const scrollToCalendly = () => {
+  const calendlySection = document.getElementById("calendly")
+  calendlySection?.scrollIntoView({ behavior: "smooth" })
+}
 
   return (
     <section
@@ -57,6 +63,16 @@ export function Showcase() {
           </div>
         </div>
       </div>
+      <div className="flex justify-center mt-12 sm:mt-16">
+  <Button
+    onClick={scrollToCalendly}
+    size="lg"
+    className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group"
+  >
+    Agenda tu llamada
+    <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+  </Button>
+</div>
     </section>
   )
 }

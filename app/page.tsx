@@ -2,7 +2,6 @@ import { Header } from "@/components/landing/header"
 import { Hero } from "@/components/landing/hero"
 import { LogoCarousel } from "@/components/landing/logo-carousel"
 import { PainPoints } from "@/components/landing/pain-points"
-import { Differentiator } from "@/components/landing/differentiator"
 import { Showcase } from "@/components/landing/showcase"
 import { Process } from "@/components/landing/process"
 import { CaseStudies } from "@/components/landing/case-studies"
@@ -28,13 +27,12 @@ export default function Home() {
       <Hero />
       <LogoCarousel />
       <PainPoints />
-      <Differentiator />
-      <Showcase />
       <Process />
+      <Showcase />
       <CaseStudies />
-      <Trust />
-      <Video />
       <Testimonials />
+      <Video />
+      <Trust />
       <FAQ />
       <FinalCTA />
       <Footer />
