@@ -45,7 +45,6 @@ export function CaseStudies() {
       className="py-20 sm:py-28 lg:py-32"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <div 
           className={`text-center mb-12 sm:mb-16 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -59,7 +58,6 @@ export function CaseStudies() {
           </p>
         </div>
 
-        {/* Projects grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
@@ -69,27 +67,24 @@ export function CaseStudies() {
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              {/* Image */}
-<div className="aspect-video relative overflow-hidden">
-  {project.image ? (
-    <img
-      src={project.image}
-      alt={project.title}
-      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-    />
-  ) : (
-    <div className="absolute inset-0 bg-gradient-to-br from-secondary via-muted to-secondary">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10" />
-      <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-        [Image Placeholder]
-      </div>
-    </div>
-  )}
-</div>
+              <div className="aspect-video relative overflow-hidden">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-secondary via-muted to-secondary">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10" />
+                    <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
+                      [Image Placeholder]
+                    </div>
+                  </div>
+                )}
+              </div>
               
-              {/* Content */}
               <div className="p-6">
-                {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-3">
                   {project.tags.map((tag, tagIndex) => (
                     <span 
@@ -119,6 +114,17 @@ export function CaseStudies() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center mt-16 sm:mt-20 px-4 sm:px-0">
+          <Button
+            onClick={scrollToCalendly}
+            size="lg"
+            className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full sm:w-auto"
+          >
+            Agenda tu llamada
+            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </Button>
         </div>
       </div>
     </section>

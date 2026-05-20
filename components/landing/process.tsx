@@ -1,7 +1,7 @@
 "use client"
 
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { Lightbulb, Eye, CheckCircle, Rocket, Shield } from "lucide-react"
+import { Lightbulb, Eye, CheckCircle, Rocket, Shield, Check } from "lucide-react"
 
 const steps = [
   {
@@ -26,7 +26,7 @@ const steps = [
     icon: Shield,
     title: "04",
     heading: "Acompañamos",
-    description: "Estabilizamos el producto y te apoyamos en el lanzamiento hasta que tus clientes no noten la diferencia."
+    description: "Estabilizamos el producto, te entregamos el código y te acompañamos 12 meses hasta que tu negocio funcione."
   }
 ]
 
@@ -44,14 +44,11 @@ export function Process() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <p className="text-sm font-medium text-primary uppercase tracking-wider mb-4">
-            Cómo trabajamos
-          </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
             Validamos tu producto antes de desarrollarlo
           </h2>
           <p className="text-lg sm:text-xl text-foreground/70 leading-relaxed text-balance">
-            No inviertes en código hasta saber que tu idea funciona. Un proceso de 4 pasos diseñado para reducir riesgo y acompañarte hasta el lanzamiento.
+           Un proceso de 4 pasos diseñado para reducir el riesgo y acompañarte hasta el lanzamiento.
           </p>
         </div>
 
@@ -82,6 +79,33 @@ export function Process() {
           ))}
         </div>
       </div>
+ {/* Banda de garantías */}
+<div
+  className={`mt-16 sm:mt-20 max-w-2xl mx-auto flex flex-col gap-4 transition-all duration-700 delay-500 ${
+    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+  }`}
+>
+  <div className="flex items-start gap-3 p-5 rounded-2xl bg-card/50 border border-border/30">
+    <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+    <p className="text-base text-foreground/80 leading-relaxed">
+      El código es 100% tuyo al final del proyecto.
+    </p>
+  </div>
+
+  <div className="flex items-start gap-3 p-5 rounded-2xl bg-card/50 border border-border/30">
+    <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+    <p className="text-base text-foreground/80 leading-relaxed">
+      Producto 100% funcional o te devolvemos tu inversión.
+    </p>
+  </div>
+
+  <div className="flex items-start gap-3 p-5 rounded-2xl bg-card/50 border border-border/30">
+    <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+    <p className="text-base text-foreground/80 leading-relaxed">
+      12 meses de garantía después del lanzamiento.
+    </p>
+  </div>
+</div>
     </section>
   )
 }

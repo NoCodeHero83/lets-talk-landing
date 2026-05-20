@@ -4,11 +4,11 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { X } from "lucide-react"
 
 const painPoints = [
-  "Has trabajado con otros equipos y el resultado no fue lo que esperabas.",
-  "Te ofrecieron soluciones genéricas que no encajan con tu idea.",
-  "Tuviste malas experiencias con desarrolladores o agencias y no puedes arriesgarte una vez más",
-  "Quieres lanzar tu producto pero no sabes por dónde empezar.",
-  "No encuentras un equipo que realmente te acompañe de inicio a fin."
+  "Empezaste un proyecto digital que falló, y no puedes permitirte equivocarte otra vez.",
+  "Invertiste en un proveedor y lo que te entregó no te servía o simplemente desapareció.",
+  "Tienes una fecha que cumplir e inversionistas y clientes esperando resultados, no promesas.",
+  "Te entregaron el producto, pero el código quedó en sus manos y no en las tuyas.",
+  "Pediste referencias y demos, pero nadie te demostró que de verdad podía con lo tuyo."
 ]
 
 export function PainPoints() {

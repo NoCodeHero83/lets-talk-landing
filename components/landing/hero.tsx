@@ -35,11 +35,11 @@ export function Hero() {
         </div>
 
         <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-6 text-balance">
-          Construimos tu software a medida en semanas, sin comprometer tu inversión antes de validarlo.
+           Tu producto digital funcionando en tu negocio, no solo en una demo.
         </h1>
 
-        <p className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-light text-foreground max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed text-pretty">
-          No pierdas meses construyendo algo que no funciona. Validamos tu idea con un prototipo antes de desarrollarla.
+        <p className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-normal text-foreground max-w-4xl mx-auto mb-8 sm:mb-10 leading-relaxed text-pretty">
+          Lo validamos antes de que comprometas tu inversión y nos quedamos hasta que el negocio funcione.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

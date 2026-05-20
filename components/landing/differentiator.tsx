@@ -26,7 +26,7 @@ const steps = [
     icon: Rocket,
     title: "04",
     heading: "Construimos",
-    description: "Desarrollamos la versión final con arquitectura escalable. Solo lo que demostró funcionar."
+    description: "Estabilizamos el producto, te entregamos el código y te acompañamos hasta que tu negocio funcione."
   }
 ]
 
@@ -44,9 +44,6 @@ export function Differentiator() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <p className="text-sm font-medium text-primary uppercase tracking-wider mb-4">
-            Cómo trabajamos
-          </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
             Validamos tu producto antes de desarrollarlo
           </h2>
