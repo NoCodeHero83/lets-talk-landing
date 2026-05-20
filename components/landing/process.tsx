@@ -79,29 +79,29 @@ export function Process() {
           ))}
         </div>
       </div>
- {/* Banda de garantías */}
+{/* Banda de garantías */}
 <div
-  className={`mt-16 sm:mt-20 max-w-2xl mx-auto flex flex-col gap-4 transition-all duration-700 delay-500 ${
+  className={`mt-16 sm:mt-20 max-w-2xl mx-auto flex flex-col gap-4 px-4 sm:px-0 transition-all duration-700 delay-500 ${
     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
   }`}
 >
   <div className="flex items-start gap-3 p-5 rounded-2xl bg-card/50 border border-border/30">
     <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-    <p className="text-base text-foreground/80 leading-relaxed">
+    <p className="text-lg sm:text-base text-foreground/80 leading-relaxed">
       El código es 100% tuyo al final del proyecto.
     </p>
   </div>
 
   <div className="flex items-start gap-3 p-5 rounded-2xl bg-card/50 border border-border/30">
     <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-    <p className="text-base text-foreground/80 leading-relaxed">
+    <p className="text-lg sm:text-base text-foreground/80 leading-relaxed">
       Producto 100% funcional o te devolvemos tu inversión.
     </p>
   </div>
 
   <div className="flex items-start gap-3 p-5 rounded-2xl bg-card/50 border border-border/30">
     <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-    <p className="text-base text-foreground/80 leading-relaxed">
+    <p className="text-lg sm:text-base text-foreground/80 leading-relaxed">
       12 meses de garantía después del lanzamiento.
     </p>
   </div>
