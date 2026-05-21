@@ -43,7 +43,7 @@ export function Trust() {
               <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-2">
                 {stat.value}
               </div>
-              <p className="text-sm sm:text-base text-muted-foreground">
+              <p className="text-base sm:text-lg text-muted-foreground">
                 {stat.label}
               </p>
             </div>
@@ -58,7 +58,7 @@ export function Trust() {
           <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
             La tecnología detrás de tu plataforma
           </h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             Construimos con el mismo stack que usan empresas de clase mundial. Ingenieros senior, código que es tuyo, y arquitectura lista para escalar cuando tu negocio crezca.
           </p>
         </div>
@@ -80,7 +80,7 @@ export function Trust() {
                   className="w-16 h-16 object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300 brightness-0 invert"
                 />
               </div>
-              <span className="text-base text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+              <span className="text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                 {tech.name}
               </span>
             </div>
@@ -92,10 +92,10 @@ export function Trust() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <p className="text-lg sm:text-xl text-foreground font-medium mb-2">
-            De Lima a Londres. De Bogotá a Nueva York.
+          <p className="text-xl sm:text-2xl text-foreground font-medium mb-2">
+            De Lima a Londres. De Santiago a Ciudad de México.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-base sm:text-lg text-muted-foreground">
             Clientes en Perú, Chile, Argentina, Colombia, Paraguay, México y Reino Unido. El modelo remoto no es una limitación, es cómo operamos desde el primer día.
           </p>
         </div>

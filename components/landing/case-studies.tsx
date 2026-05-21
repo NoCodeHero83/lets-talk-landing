@@ -99,7 +99,7 @@ export function CaseStudies() {
                 <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-base text-muted-foreground mb-4">
+                <p className="text-base text-foreground/80 mb-4">
                   {project.description}
                 </p>
                 
