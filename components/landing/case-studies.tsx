@@ -53,7 +53,7 @@ export function CaseStudies() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
             Casos de éxito
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
+          <p className="text-lg sm:text-base text-muted-foreground max-w-2xl mx-auto text-pretty">
             Cómo empresas como la tuya lograron que funcionara.
           </p>
         </div>
@@ -99,7 +99,7 @@ export function CaseStudies() {
                 <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-base text-muted-foreground mb-4">
                   {project.description}
                 </p>
                 

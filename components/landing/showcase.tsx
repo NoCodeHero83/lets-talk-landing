@@ -26,7 +26,7 @@ export function Showcase() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
             Ellos confiaron en nosotros y hoy su producto digital genera resultados reales.
           </h2>
-          <p className="text-lg sm:text-xl text-foreground/70 leading-relaxed text-balance">
+          <p className="text-lg sm:text-base text-foreground/70 leading-relaxed text-balance">
             No son demos ni promesas. Son plataformas en producción funcionando hoy.
           </p>
         </div>
