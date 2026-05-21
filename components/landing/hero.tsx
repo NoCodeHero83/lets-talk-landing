@@ -19,7 +19,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-8 sm:pt-12 bg-transparent">
+    <section className="relative flex items-start justify-center overflow-hidden pt-12 sm:pt-20 pb-16 sm:pb-24 bg-transparent">
       <div
         ref={ref}
         className={`relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-700 ${
@@ -30,7 +30,7 @@ export function Hero() {
           <img
             src="/zerocode-logo-white.png"
             alt="Zerocode"
-            className="h-24 sm:h-28 md:h-32 w-auto object-contain"
+            className="h-20 sm:h-28 md:h-32 w-auto object-contain"
           />
         </div>
 
