@@ -8,7 +8,7 @@ const steps = [
     icon: Lightbulb,
     title: "01",
     heading: "Entendemos",
-    description: "Alineamos tu producto, el problema que resuelve y cómo se ve el éxito antes de tocar una línea de código."
+    description: "Alineamos tu producto con el objetivo de negocio y tu retorno de inversión, antes de tocar una línea de código."
   },
   {
     icon: Eye,
@@ -20,7 +20,7 @@ const steps = [
     icon: CheckCircle,
     title: "03",
     heading: "Construimos",
-    description: "Desarrollamos solo lo que ha demostrado funcionar en la fase de validación, con arquitectura escalable."
+    description: "Desarrollamos el producto que definimos y aprobaste en el prototipo, con arquitectura escalable."
   },
   {
     icon: Shield,

@@ -27,7 +27,7 @@ export function Video() {
             Nos quedamos hasta que el negocio funcione.
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-            No solo construimos tu plataforma. Estamos contigo hasta que tus clientes no noten la diferencia.
+            No solo construimos tu plataforma. Te acompañamos hasta que esté generando resultados.
           </p>
         </div>
 

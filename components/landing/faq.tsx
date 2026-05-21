@@ -11,27 +11,27 @@ import {
 const faqs = [
   {
     question: "Ya lo intentamos con otro proveedor, ¿por qué esta vez sería diferente?",
-    answer: "Porque ves el producto antes de comprometer tu inversión completa. El discovery mapea tus requerimientos reales, construimos el frontend completo y definimos alcance, presupuesto y tiempos antes de que empiece el desarrollo. Sin sorpresas, sin scope abierto."
+    answer: "Porque ves el producto antes de comprometer toda tu inversión. En el discovery mapeamos tus requerimientos reales, construimos el frontend completo y definimos alcance, presupuesto y tiempos antes de que empiece el desarrollo. Sin sorpresas."
   },
   {
     question: "¿Cómo garantizan que nuestros clientes actuales no noten la transición?",
-    answer: "La migración se planifica en la Semana 1, no después de la entrega. Definimos el protocolo de ejecución paralela, los puntos de validación de datos y el cronograma de comunicación con clientes antes de que empiece el desarrollo. Tus clientes no van a notar nada excepto que todo funciona mejor."
+    answer: "La migración se planifica en la Semana 1, no después de la entrega. Definimos el protocolo de ejecución paralela, los puntos de validación de datos y el cronograma de comunicación con clientes antes de que empiece el desarrollo. Tus clientes no van a notar nada, excepto que todo funciona mejor."
   },
   {
     question: "¿Quién es el dueño del código?",
-    answer: "Tú. Desde el día 1 firmamos NDA y acuerdo de propiedad intelectual. En la entrega recibís el código completo, la documentación y una sesión de capacitación para tu equipo. Nunca dependés de nosotros a menos que así lo eliges."
+    answer: "Tú. Desde el día 1 firmamos un NDA y un acuerdo de propiedad intelectual. Al final del proyecto recibes el código completo, la documentación y una sesión de capacitación para tu equipo. Nunca dependes de nosotros, a menos que tú lo elijas."
   },
   {
     question: "¿Cuánto cuesta y cómo se estructuran los pagos?",
-    answer: "Trabajamos con precio fijo atado a hitos claros. Sin facturas abiertas ni cambios sorpresa. Cada pago está atado a un entregable real que podés ver y aprobar. La mayoría de nuestros clientes recuperan el costo total del desarrollo en 4 a 6 meses solo con los ahorros en SaaS y reducción de trabajo manual."
+    answer: "Trabajamos con precio fijo atado a hitos claros. Sin facturas abiertas ni cambios sorpresa. Cada pago está atado a un entregable real que puedes ver y aprobar. La mayoría de nuestros clientes recuperan el costo total del desarrollo en 4 a 6 meses, solo con los ahorros en SaaS y la reducción de trabajo manual."
   },
   {
     question: "¿Qué pasa después del lanzamiento?",
-    answer: "30 días de soporte post lanzamiento para resolver cualquier ajuste antes de que llegue a tus clientes. En el Día 90 definimos el roadmap de la Fase 2 con claridad sobre lo que viene. La mayoría de nuestros clientes continúan como socios tecnológicos a largo plazo más allá del desarrollo inicial."
+    answer: "Tienes 30 días de soporte intensivo para resolver cualquier ajuste antes de que llegue a tus clientes, más 12 meses de garantía sobre el código. Y si no entregamos un producto funcional, te devolvemos el 100% de tu inversión. En el Día 90 definimos juntos el roadmap de la Fase 2. La mayoría de nuestros clientes continúan con nosotros como socios tecnológicos a largo plazo."
   },
   {
     question: "¿Cómo entregan más rápido manteniendo la calidad de primer nivel?",
-    answer: "Combinamos ingenieros senior con desarrollo asistido por inteligencia artificial. La IA acelera interfaces, código base y lógica repetitiva. Los ingenieros diseñan la arquitectura y validan cada decisión. El resultado es código listo para producción entregado más rápido que una agencia tradicional — sin comprometer seguridad, escalabilidad ni rendimiento."
+    answer: "Combinamos ingenieros senior con desarrollo asistido por inteligencia artificial. La IA acelera interfaces, código base y lógica repetitiva. Los ingenieros diseñan la arquitectura y validan cada decisión. El resultado es código listo para producción, entregado más rápido que una agencia tradicional, sin comprometer seguridad, escalabilidad ni rendimiento."
   }
 ]
 

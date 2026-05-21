@@ -39,7 +39,7 @@ export function FinalCTA() {
             Todo lo que necesitas saber, en una sola llamada.
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Agenda una llamada de 30 minutos. Te decimos exactamente qué necesitas, cuánto cuesta y cuándo recuperas tu inversión. Si no tiene sentido para tu negocio, te lo decimos en esa misma llamada.
+            Te diremos cuánto cuesta, cuánto demora y si realmente tiene sentido para tu negocio.
           </p>
         </div>
 

@@ -59,7 +59,7 @@ export function Trust() {
             La tecnología detrás de tu plataforma
           </h3>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            Construimos con el mismo stack que usan las empresas de clase mundial. Código real, ingenieros senior y arquitectura diseñada para escalar.
+            Construimos con el mismo stack que usan empresas de clase mundial. Ingenieros senior, código que es tuyo, y arquitectura lista para escalar cuando tu negocio crezca.
           </p>
         </div>
 

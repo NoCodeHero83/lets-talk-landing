@@ -53,7 +53,7 @@ export function Testimonials() {
             Lo que dicen nuestros clientes
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Conoce las historias detrás de las relaciones que hemos construido con nuestros clientes.
+            Founders y empresas que confiaron en nosotros para construir lo que su negocio necesitaba.
           </p>
         </div>
 

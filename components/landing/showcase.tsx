@@ -24,11 +24,10 @@ export function Showcase() {
           }`}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-            Ellos también empezaron con una idea. 
-            Hoy tienen un negocio digital.
+            Ellos confiaron en nosotros y hoy su producto digital genera resultados reales.
           </h2>
           <p className="text-lg sm:text-xl text-foreground/70 leading-relaxed text-balance">
-            Un recorrido por algunas de las plataformas que construimos para nuestros clientes.
+            No son demos ni promesas. Son plataformas en producción funcionando hoy.
           </p>
         </div>
 
@@ -59,7 +58,7 @@ export function Showcase() {
           </div>
 
           <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 px-4 py-2 bg-card border border-border/50 rounded-xl shadow-lg">
-            <p className="text-xs text-muted-foreground">Plataformas 100% funcionales en producción</p>
+            <p className="text-lg text-muted-foreground">Plataformas 100% funcionales en producción</p>
           </div>
         </div>
       </div>
