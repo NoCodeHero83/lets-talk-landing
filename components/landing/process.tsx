@@ -47,7 +47,7 @@ export function Process() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
             Validamos tu producto antes de desarrollarlo
           </h2>
-          <p className="text-lg sm:text-xl text-foreground/70 leading-relaxed text-balance">
+          <p className="text-lg text-foreground/70 leading-relaxed text-balance">
            Un proceso de 4 pasos diseñado para reducir el riesgo y acompañarte hasta el lanzamiento.
           </p>
         </div>
@@ -72,7 +72,7 @@ export function Process() {
               <h3 className="text-xl font-semibold text-foreground mb-2">
                 {step.heading}
               </h3>
-              <p className="text-base text-foreground/70 leading-relaxed">
+              <p className="text-lg text-foreground/70 leading-relaxed">
                 {step.description}
               </p>
             </div>
@@ -87,21 +87,21 @@ export function Process() {
 >
   <div className="flex items-start gap-3 p-5 rounded-2xl bg-card/50 border border-border/30">
     <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-    <p className="text-lg sm:text-base text-foreground/80 leading-relaxed">
+    <p className="text-lg text-foreground/80 leading-relaxed">
       El código es 100% tuyo al final del proyecto.
     </p>
   </div>
 
   <div className="flex items-start gap-3 p-5 rounded-2xl bg-card/50 border border-border/30">
     <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-    <p className="text-lg sm:text-base text-foreground/80 leading-relaxed">
+    <p className="text-lg text-foreground/80 leading-relaxed">
       Producto 100% funcional o te devolvemos tu inversión.
     </p>
   </div>
 
   <div className="flex items-start gap-3 p-5 rounded-2xl bg-card/50 border border-border/30">
     <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-    <p className="text-lg sm:text-base text-foreground/80 leading-relaxed">
+    <p className="text-lg text-foreground/80 leading-relaxed">
       12 meses de garantía después del lanzamiento.
     </p>
   </div>
