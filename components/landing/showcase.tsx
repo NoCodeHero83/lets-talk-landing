@@ -58,7 +58,7 @@ export function Showcase() {
           </div>
 
           <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 px-4 py-2 bg-card border border-border/50 rounded-xl shadow-lg">
-            <p className="text-lg text-muted-foreground">Plataformas 100% funcionales en producción</p>
+            <p className="text-sm sm:text-lg text-muted-foreground">Plataformas 100% funcionales en producción</p>
           </div>
         </div>
       </div>
