@@ -2,16 +2,40 @@
 
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { X } from "lucide-react"
+import { useState, useEffect } from "react"
 
-const painPoints = [
+const painPointsBase = [
   "Empezaste un proyecto digital que falló, y no puedes permitirte equivocarte otra vez.",
   "Invertiste en un proveedor y lo que te entregó no te servía o simplemente desapareció.",
-  "Tienes una fecha que cumplir e inversionistas y clientes esperando resultados, no promesas.",
   "Te entregaron el producto, pero el código quedó en sus manos y no en las tuyas.",
   "Pediste referencias y demos, pero nadie te demostró que de verdad podía con lo tuyo."
 ]
 
+const painPointsDinamicos: Record<string, string[]> = {
+  fintech: [
+    "Tu plataforma actual no aguanta el volumen de usuarios que tienes, y cada falla te cuesta clientes.",
+    "Tienes una fecha que cumplir e inversionistas y clientes esperando resultados, no promesas."
+  ],
+  salud: [
+    "Sigues gestionando pacientes y citas de forma manual, y eso te está costando pacientes."
+  ],
+  general: [
+    "No tienes la infraestructura necesaria para el volumen que ya manejas, y cada falla te cuesta clientes."
+  ]
+}
+
+function useNicho() {
+  const [nicho, setNicho] = useState("general")
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setNicho(params.get("nicho") || "general")
+  }, [])
+  return nicho
+}
+
 export function PainPoints() {
+  const nicho = useNicho()
+  const painPoints = [...painPointsBase, ...(painPointsDinamicos[nicho] || painPointsDinamicos.general)]
   const { ref, isVisible } = useScrollAnimation<HTMLElement>()
 
   return (

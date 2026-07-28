@@ -3,27 +3,40 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { useState, useEffect } from "react"
 
-const projects = [
+interface Project {
+  id: string
+  title: string
+  description: string
+  tags: string[]
+  image: string
+}
+
+const projects: Project[] = [
   {
+    id: "plataforma-fintech-1",
     title: "Increscendo Fintech",
     description: "De operación manual a fintech 100% digital en México. Construimos la plataforma completa de suscripción y préstamos. Duplicaron alcance, atrajeron inversionistas y escalaron ingresos hasta en un 200%.",
     tags: ["Fintech", "Préstamos", "WebApp"],
     image: "/projects/IncrescendoFintech.png"
   },
   {
+    id: "plataforma-fintech-2",
     title: "Alianza Capital",
     description: "De operaciones 100% manuales a fintech automatizada en 12 meses. Construimos portal, app móvil y gestión financiera. Hoy escalan clientes sin sumar personal operativo.",
     tags: ["Fintech", "Inversiones", "AppMóvil"],
     image: "/projects/AlianzaCapital.png"
   },
   {
+    id: "portal-adulto-mayor",
     title: "Later Life Training",
     description: "De plataforma inestable a producto confiable en 6 meses. Reconstruimos backend, reservas, pagos y UX. Resultado: 8.000 USD mensuales y arquitectura lista para crecer.",
     tags: ["Salud", "Clínicas", "WebApp"],
     image: "/projects/LaterLifeTraining.png"
   },
   {
+    id: "default-hulp",
     title: "Hulp",
     description: "Construimos la app móvil de un marketplace de servicios desde cero. Hoy: 1.600 descargas, revenue constante y un mercado validado donde antes no había producto.",
     tags: ["Servicios", "Marketplace", "AppMóvil"],
@@ -31,7 +44,33 @@ const projects = [
   }
 ]
 
+const idsDestacadosPorNicho: Record<string, string[]> = {
+  fintech: ["plataforma-fintech-1", "plataforma-fintech-2"],
+  salud: ["portal-adulto-mayor"],
+  general: []
+}
+
+function reordenarPlataformas(plataformas: Project[], idsDestacados: string[]) {
+  if (idsDestacados.length === 0) return plataformas
+  const destacadas = idsDestacados
+    .map(id => plataformas.find(p => p.id === id))
+    .filter((p): p is Project => p !== undefined)
+  const resto = plataformas.filter(p => !idsDestacados.includes(p.id))
+  return [...destacadas, ...resto]
+}
+
+function useNicho() {
+  const [nicho, setNicho] = useState("general")
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setNicho(params.get("nicho") || "general")
+  }, [])
+  return nicho
+}
+
 export function CaseStudies() {
+  const nicho = useNicho()
+  const proyectosVisibles = reordenarPlataformas(projects, idsDestacadosPorNicho[nicho] || [])
   const { ref, isVisible } = useScrollAnimation<HTMLElement>()
 
   const scrollToCalendly = () => {
@@ -59,7 +98,7 @@ export function CaseStudies() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+          {proyectosVisibles.map((project, index) => (
             <div
               key={index}
               className={`group rounded-2xl bg-card border border-border/50 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 ${

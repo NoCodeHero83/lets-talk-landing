@@ -4,8 +4,26 @@ import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import Script from "next/script"
+import { useState, useEffect } from "react"
+
+const headlines = {
+  fintech: "Tu plataforma fintech funcionando en tu negocio, no solo en una demo.",
+  salud: "Tu plataforma de salud funcionando en tu negocio, no solo en una demo.",
+  general: "Tu producto digital funcionando en tu negocio, no solo en una demo.",
+}
+
+function useNicho() {
+  const [nicho, setNicho] = useState("general")
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setNicho(params.get("nicho") || "general")
+  }, [])
+  return nicho
+}
 
 export function Hero() {
+  const nicho = useNicho()
+  const headline = headlines[nicho as keyof typeof headlines] || headlines.general
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>()
 
   const scrollToCalendly = () => {
@@ -35,7 +53,7 @@ export function Hero() {
         </div>
 
         <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-6 text-balance">
-           Tu producto digital funcionando en tu negocio, no solo en una demo.
+          {headline}
         </h1>
 
         <p className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-normal text-foreground max-w-4xl mx-auto mb-8 sm:mb-10 leading-relaxed text-pretty">
