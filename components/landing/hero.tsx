@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { ArrowRight, ChevronDown } from "lucide-react"
+import { ArrowRight, Check, ChevronDown } from "lucide-react"
 import Script from "next/script"
 import { useState, useEffect } from "react"
 
@@ -59,6 +59,13 @@ export function Hero() {
         <p className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-normal text-foreground max-w-4xl mx-auto mb-8 sm:mb-10 leading-relaxed text-pretty">
           Lo validamos antes de que comprometas tu inversión y nos quedamos hasta que el negocio funcione.
         </p>
+
+        <div className="flex justify-center mb-8 sm:mb-10">
+          <span className="inline-flex items-center gap-2 bg-green-500/10 border border-green-400/20 text-green-400 text-sm sm:text-base font-semibold px-5 py-2 rounded-full">
+            <Check className="w-4 h-4" />
+            100% funcional o te devolvemos tu inversión
+          </span>
+        </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
