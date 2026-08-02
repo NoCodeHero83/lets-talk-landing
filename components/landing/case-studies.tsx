@@ -1,161 +1,361 @@
 "use client"
 
+import { useState, useEffect, type ReactNode } from "react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { ArrowRight, X, CheckCircle2, Lightbulb, Wrench, TrendingUp } from "lucide-react"
-import { useState, useEffect } from "react"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from "@/components/ui/carousel"
+import {
+  ArrowRight,
+  X,
+  CheckCircle2,
+  Lightbulb,
+  Wrench,
+  TrendingUp,
+  Globe,
+  Cpu,
+  ExternalLink,
+} from "lucide-react"
 
-interface BusinessCase {
-  problem: string
-  built: string[]
-  results: string[]
+interface ProjectLink {
+  label: string
+  url: string
 }
 
 interface Project {
   id: string
   title: string
+  category: string
+  summary: string
   description: string
-  longDescription: string
-  tags: string[]
-  image: string
-  mockImage?: string
+  problem: string
+  features: string[]
+  impact: string[]
   techSpecs: Record<string, string>
-  businessCase?: BusinessCase
+  scope: string
+  status: string[]
+  cover: string
+  images: string[]
+  links: ProjectLink[]
 }
 
 const projects: Project[] = [
   {
-    id: "plataforma-fintech-1",
-    title: "Increscendo Fintech",
-    description: "De operación manual a fintech 100% digital en México. Construimos la plataforma completa de suscripción y préstamos. Duplicaron alcance, atrajeron inversionistas y escalaron ingresos hasta en un 200%.",
-    longDescription: "Increscendo es una fintech mexicana que transformó su operación manual en una plataforma 100% digital. Desarrollamos una solución integral de suscripción y préstamos que permite a los usuarios registrarse, solicitar créditos y gestionar sus inversiones desde cualquier dispositivo. La plataforma incluye un portal de cliente, un panel de administración y herramientas de gestión financiera automatizadas.",
-    tags: ["Fintech", "Préstamos", "WebApp"],
-    image: "/projects/IncrescendoFintech.png",
+    id: "alianza-capital",
+    title: "Alianza Capital",
+    category: "Fintech",
+    summary:
+      "De operaciones 100% manuales a una plataforma fintech completa: dos empresas incorporadas y automatizadas, una app móvil en ambas tiendas y la capacidad de escalar clientes sin aumentar la plantilla.",
+    description:
+      "Alianza es una empresa financiera colombiana cuya misión es facilitar el acceso a productos financieros a pequeños inversionistas. Desarrollamos una aplicación móvil y una plataforma web de gestión que maneja todos los contratos y activos financieros. La plataforma ofrece una interfaz funcional y altamente efectiva que permite a los inversionistas realizar sus transacciones con facilidad y confianza. Se integró la pasarela de pago PSE y la aplicación está publicada en Google Play y Apple Store.",
+    problem:
+      "El onboarding de clientes, el seguimiento de inversiones y los reportes se realizaban completamente a mano. Sin plataforma, no había confianza de inversionistas ni clientes, y no había forma de crecer sin contratar más personal.",
+    features: [
+      "Portal del cliente y panel de administración.",
+      "App móvil publicada en App Store y Google Play.",
+      "Gestión financiera para nóminas y préstamos a empleados.",
+      "Pasarela de pago PSE integrada.",
+    ],
+    impact: [
+      "Dos empresas incorporadas y 100% operativas.",
+      "Onboarding, seguimiento e informes automatizados.",
+      "App móvil disponible en ambas tiendas.",
+      "Capacidad de escalar clientes sin aumentar personal.",
+    ],
     techSpecs: {
       "Diseño": "Figma",
       "Implementación": "FlutterFlow & Firebase",
     },
+    scope: "Colombia.",
+    status: ["iOS", "Android", "Web"],
+    cover: "/projects/alianza-1.png",
+    images: [
+      "/projects/alianza-1.png",
+      "/projects/alianza-2.png",
+      "/projects/alianza-3.png",
+      "/projects/alianza-4.png",
+      "/projects/alianza-5.png",
+    ],
+    links: [
+      { label: "App Store", url: "https://apps.apple.com/pe/app/alianza-capital/id6502927890" },
+      { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.mycompany.alicard" },
+    ],
   },
   {
-    id: "plataforma-fintech-2",
-    title: "Alianza Capital",
-    description: "De operaciones 100% manuales a fintech automatizada en 12 meses. Construimos portal, app móvil y gestión financiera. Hoy escalan clientes sin sumar personal operativo.",
-    longDescription: "Alianza es una empresa financiera colombiana cuya misión es hacer accesibles los productos financieros a pequeños inversionistas. Desarrollamos una aplicación móvil y una plataforma web de gestión que maneja todos los contratos y activos financieros. Ofrece una interfaz funcional y altamente efectiva que permite a los inversionistas realizar sus transacciones con facilidad y confianza. Se integró la pasarela de pago PSE y la aplicación está publicada en Google Play y Apple Store.",
-    tags: ["Fintech", "Inversiones", "AppMóvil"],
-    image: "/projects/AlianzaCapital.png",
-    mockImage: "/projects/alianza-mock.png",
+    id: "racing-kx",
+    title: "Racing KX",
+    category: "Red social",
+    summary:
+      "Una red social especializada para la comunidad profesional del automovilismo con perfiles tipo vCard, publicaciones, seguidores y funcionalidades premium, desarrollada junto al partner Creante para una comunidad francesa de creadores de contenido.",
+    description:
+      "Racing KX es una red social especializada para profesionales y aficionados del mundo del motorsport, desarrollada para Francia junto a nuestro partner Creante. Ofrece perfiles profesionales, publicaciones, seguidores y networking especializado, además de funcionalidades premium mediante suscripción. La plataforma fue diseñada inicialmente en Figma y desarrollada en React Native.",
+    problem:
+      "La comunidad profesional del motorsport necesitaba un espacio especializado para construir perfiles profesionales, compartir contenido y hacer networking con sus pares, combinado con funcionalidades premium que sostuvieran un modelo sustentable.",
+    features: [
+      "Perfiles profesionales.",
+      "Publicaciones y seguidores.",
+      "Networking dentro de la comunidad.",
+      "Comunidad especializada en motorsport.",
+      "Funcionalidades premium mediante suscripción.",
+    ],
+    impact: [
+      "Una red social construida para la comunidad profesional del motorsport.",
+      "Desarrollada para Francia junto al partner Creante.",
+      "Disponible en App Store y Google Play.",
+    ],
     techSpecs: {
       "Diseño": "Figma",
-      "Implementación": "Flutterflow & Firebase",
-      "Google Play": "Disponible",
-      "Apple Store": "Disponible",
+      "Implementación": "React Native",
     },
-    businessCase: {
-      problem: "El onboarding de clientes, el seguimiento de inversiones y los reportes se realizaban completamente a mano. Sin plataforma, no había confianza de inversionistas ni clientes, y no había forma de crecer sin contratar más personal.",
-      built: [
-        "Portal del cliente y panel de administración.",
-        "App móvil publicada en App Store y Google Play.",
-        "Gestión financiera para nóminas y préstamos a empleados.",
-      ],
-      results: [
-        "Dos empresas incorporadas y 100% operativas.",
-        "Onboarding, seguimiento e informes automatizados.",
-        "App móvil disponible en ambas tiendas.",
-        "Capacidad de escalar clientes sin aumentar personal.",
-      ],
-    },
+    scope: "Francia.",
+    status: ["iOS", "Android"],
+    cover: "/projects/racingkx-2.png",
+    images: [
+      "/projects/racingkx-1.png",
+      "/projects/racingkx-2.png",
+      "/projects/racingkx-3.png",
+      "/projects/racingkx-4.png",
+      "/projects/racingkx-5.png",
+      "/projects/racingkx-6.png",
+    ],
+    links: [],
   },
   {
-    id: "portal-adulto-mayor",
-    title: "Later Life Training",
-    description: "De plataforma inestable a producto confiable en 6 meses. Reconstruimos backend, reservas, pagos y UX. Resultado: 8.000 USD mensuales y arquitectura lista para crecer.",
-    longDescription: "Later Life Training es una aplicación web de una empresa escocesa cuya misión es empoderar a personas mayores para combatir enfermedades relacionadas con la edad y mejorar su calidad de vida. Proporciona programas de entrenamiento personalizados y servicios de apoyo diseñados para promover el bienestar, la independencia y un envejecimiento saludable.",
-    tags: ["Salud", "Clínicas", "WebApp"],
-    image: "/projects/LaterLifeTraining.png",
-    mockImage: "/projects/llt-mock.png",
+    id: "ilirox",
+    title: "Ilirox",
+    category: "Red social",
+    summary:
+      "Una red social profesional para agentes inmobiliarios con match inteligente entre búsquedas y propiedades, alertas automáticas, búsqueda por polígonos en el mapa, validación comunitaria y contenido social, construida para convertirse en la mayor red inmobiliaria de México.",
+    description:
+      "Ilirox es una red social profesional para agentes inmobiliarios cuyo objetivo es conectar a los profesionales mediante un sistema inteligente de coincidencias entre propiedades y búsquedas. Ofrece match inteligente, alertas automáticas cuando aparecen propiedades compatibles, búsqueda mediante polígonos sobre el mapa, validación comunitaria de agentes inmobiliarios y publicación de propiedades, reels y videos. Ilirox inicia operaciones en Aguascalientes, México, sobre una arquitectura preparada para expandirse a todo el país. Disponible para iOS y Android.",
+    problem:
+      "Los profesionales inmobiliarios en Aguascalientes no contaban con una red profesional dedicada: el match entre búsquedas y propiedades era manual, no había alertas automáticas cuando aparecían coincidencias, ni una forma de validar agentes o compartir contenido profesional en un solo lugar.",
+    features: [
+      "Matching inteligente entre propiedades y búsquedas.",
+      "Alertas automáticas cuando aparecen propiedades compatibles.",
+      "Búsqueda mediante polígonos sobre el mapa.",
+      "Validación comunitaria de agentes inmobiliarios.",
+      "Publicación de propiedades, reels y videos.",
+    ],
+    impact: [
+      "La mayor red social especializada para agentes inmobiliarios.",
+      "Inicia en Aguascalientes, con arquitectura para expansión nacional.",
+      "Disponible para iOS y Android.",
+    ],
+    techSpecs: {},
+    scope: "México — inicia en Aguascalientes, con expansión prevista a todo el país.",
+    status: ["iOS", "Android"],
+    cover: "/projects/ilirox-portada.png",
+    images: [
+      "/projects/ilirox-portada.png",
+      "/projects/ilirox-1.png",
+      "/projects/ilirox-2.png",
+      "/projects/ilirox-3.png",
+      "/projects/ilirox-4.png",
+      "/projects/ilirox-5.png",
+      "/projects/ilirox-6.png",
+      "/projects/ilirox-7.png",
+    ],
+    links: [],
+  },
+  {
+    id: "true-english",
+    title: "True English",
+    category: "Educación",
+    summary:
+      "Una plataforma de aprendizaje de inglés asistida por IA con cursos completos, evaluación automática de pronunciación, retroalimentación personalizada y contenido especializado para cada organización, utilizada actualmente en Hermosillo y Zacatecas.",
+    description:
+      "True English es una plataforma educativa asistida por Inteligencia Artificial que permite enseñar inglés mediante cursos estructurados. Incluye evaluación automática de pronunciación mediante IA, retroalimentación personalizada, cursos para niños, cursos TOEFL, cursos empresariales y contenido privado para organizaciones. True English opera actualmente en Hermosillo y Zacatecas, con expansión prevista para todo México. Disponible para iOS y Android.",
+    problem:
+      "Aprender inglés con cursos genéricos dejaba a los estudiantes sin retroalimentación personalizada ni evaluación automática de pronunciación, dificultando el seguimiento del progreso y sin permitir que las organizaciones entregaran contenido adaptado.",
+    features: [
+      "Cursos estructurados de inglés.",
+      "Evaluación automática de pronunciación mediante IA.",
+      "Retroalimentación personalizada.",
+      "Cursos para niños.",
+      "Cursos TOEFL.",
+      "Cursos empresariales.",
+      "Contenido privado para organizaciones.",
+    ],
+    impact: [
+      "Plataforma de aprendizaje de inglés asistida por IA en uso activo.",
+      "Operando en Hermosillo y Zacatecas, con expansión nacional prevista.",
+      "Disponible para iOS y Android.",
+    ],
+    techSpecs: {},
+    scope: "México — Hermosillo y Zacatecas, con expansión prevista a todo el país.",
+    status: ["iOS", "Android"],
+    cover: "/projects/trueenglish-1.png",
+    images: [
+      "/projects/trueenglish-1.png",
+      "/projects/trueenglish-2.png",
+      "/projects/trueenglish-3.png",
+      "/projects/trueenglish-4.png",
+      "/projects/trueenglish-5.png",
+      "/projects/trueenglish-6.png",
+    ],
+    links: [],
+  },
+  {
+    id: "increciendo-fintech",
+    title: "Increciendo FinTech",
+    category: "Fintech",
+    summary:
+      "Una plataforma web para la gestión de préstamos en línea basada en un modelo de suscripción, con tasas preferenciales para suscritos, tasas estándar para ocasionales y planes corporativos: un SaaS que beneficia tanto a la fintech como a sus clientes.",
+    description:
+      "Increciendo FinTech es una plataforma web de préstamos en línea cuya principal innovación es un modelo de suscripción que permite acceder a mejores tasas de interés. Los usuarios frecuentes obtienen beneficios mediante la suscripción, y las empresas pueden adquirir planes corporativos para que sus colaboradores accedan a mejores condiciones de financiamiento. Este modelo beneficia tanto a los clientes como a la fintech, al incorporar ingresos recurrentes mediante suscripción. Opera actualmente en Ciudad de México, con planes de expansión. Disponible únicamente como plataforma web.",
+    problem:
+      "Gestionar préstamos en línea requería un modelo de precios que recompensara a los usuarios recurrentes, atendiera a clientes ocasionales y ofreciera una propuesta estructurada a las empresas, manteniendo la plataforma rentable y escalable.",
+    features: [
+      "Plataforma web de préstamos en línea.",
+      "Modelo de suscripción con mejores tasas para usuarios suscritos.",
+      "Planes corporativos para empresas y colaboradores.",
+      "Monetización mediante ingresos recurrentes.",
+    ],
+    impact: [
+      "Un modelo que beneficia tanto a los clientes como a la fintech.",
+      "Operando en Ciudad de México, con planes de expansión.",
+      "Disponible únicamente como plataforma web.",
+    ],
+    techSpecs: {},
+    scope: "México — Ciudad de México, con planes de expansión.",
+    status: ["Web"],
+    cover: "/projects/increciendo-1.png",
+    images: [
+      "/projects/increciendo-1.png",
+      "/projects/increciendo-2.png",
+      "/projects/increciendo-3.png",
+      "/projects/increciendo-4.png",
+      "/projects/increciendo-5.png",
+    ],
+    links: [],
+  },
+  {
+    id: "daily-sparkle",
+    title: "Daily Sparkle",
+    category: "SaaS",
+    summary:
+      "Daily Sparkle es una aplicación web del Reino Unido que ayuda a los hogares de cuidado a involucrar a sus residentes y conectar con sus familias. Ofrece gestión del cuidado, planificación de actividades y un portal seguro con actualizaciones e información.",
+    description:
+      "Daily Sparkle es una plataforma SaaS utilizada por instituciones del Reino Unido para residencias geriátricas. Permite la gestión integral de residentes, la planificación de actividades y el acceso a una biblioteca de actividades, además de múltiples módulos administrativos. La plataforma también conecta a los hogares de cuidado con las familias mediante un portal seguro con actualizaciones e información personalizada.",
+    problem:
+      "Las residencias geriátricas necesitaban una plataforma integral para gestionar a sus residentes, planificar actividades y mantener informadas a las familias, con módulos administrativos que simplificaran la operación diaria.",
+    features: [
+      "Gestión de residentes.",
+      "Planificación de actividades.",
+      "Biblioteca de actividades.",
+      "Múltiples módulos administrativos.",
+      "Portal seguro para familias con actualizaciones e información.",
+    ],
+    impact: [
+      "Plataforma SaaS utilizada por instituciones del Reino Unido.",
+      "Involucra a los residentes y conecta a las familias.",
+      "Simplifica la operación de los hogares de cuidado.",
+    ],
     techSpecs: {
-      "Diseño": "Figma",
+      "Diseño": "Lovable",
       "Implementación": "Bubble",
-      "Sitio web": "laterlifetraining.co.uk",
     },
-    businessCase: {
-      problem: "Tras una importante inversión, la plataforma estuvo a punto de ser abandonada. Flujos de trabajo defectuosos, reservas y pagos poco fiables, y un sistema demasiado inestable para funcionar, y mucho menos para escalar.",
-      built: [
-        "Base de datos y arquitectura de backend reconstruidas.",
-        "Sistemas de reserva, eventos y pago estabilizados.",
-        "UX/UI rediseñada para mayor claridad y coherencia.",
-        "Panel de administración para control operativo completo.",
-      ],
-      results: [
-        "Plataforma estable y lista para producción.",
-        "Activación de USD 8,000/mes mediante flujos de reserva y pago fiables.",
-        "Experiencia de usuario clara y consistente.",
-        "Plataforma lista para escalar sin correcciones constantes.",
-      ],
-    },
-  },
-  {
-    id: "default-hulp",
-    title: "Hulp",
-    description: "Construimos la app móvil de un marketplace de servicios desde cero. Hoy: 1.600 descargas, revenue constante y un mercado validado donde antes no había producto.",
-    longDescription: "Hulp es una plataforma colombiana que conecta clientes con profesionales de confianza. Desarrollamos dos aplicaciones: la App para Clientes, que ofrece una interfaz sencilla con un sistema de matching impulsado por IA, y la App para Proveedores, que permite a los profesionales mostrar sus habilidades y coordinar su trabajo. Todo orquestado por un panel de administración que supervisa servicios, usuarios y problemas en tiempo real.",
-    tags: ["Servicios", "Marketplace", "AppMóvil"],
-    image: "/projects/Hulp.png",
-    mockImage: "/projects/hulp-mock.png",
-    techSpecs: {
-      "Diseño": "Figma",
-      "Implementación": "FlutterFlow & Supabase",
-      "Google Play": "+5,000 descargas",
-      "Apple Store": "Disponible",
-    },
-    businessCase: {
-      problem: "La operación era completamente manual, sin plataforma digital que soportara la demanda. La asignación de servicios, proveedores y gestión de clientes dependían de procesos informales, difíciles de escalar.",
-      built: [
-        "Arquitectura completa de marketplace desde cero.",
-        "Sistema centralizado de reservas y asignación de servicios.",
-        "App para clientes y app para proveedores.",
-        "Panel de administración con control en tiempo real.",
-        "Matching impulsado por IA.",
-      ],
-      results: [
-        "Marketplace funcional, operativo en producción.",
-        "Más de 5,000 descargas en Google Play.",
-        "Ingresos recurrentes generados en plataforma.",
-        "Base tecnológica escalable para expansión.",
-      ],
-    },
+    scope: "Reino Unido.",
+    status: ["Web"],
+    cover: "/projects/dailysparkle-1.png",
+    images: [
+      "/projects/dailysparkle-1.png",
+      "/projects/dailysparkle-2.png",
+      "/projects/dailysparkle-3.png",
+      "/projects/dailysparkle-4.png",
+      "/projects/dailysparkle-5.png",
+    ],
+    links: [{ label: "Sitio Web", url: "https://dailysparkle.co.uk/" }],
   },
 ]
 
-const idsDestacadosPorNicho: Record<string, string[]> = {
-  fintech: ["plataforma-fintech-1", "plataforma-fintech-2"],
-  salud: ["portal-adulto-mayor"],
-  general: [],
+function InfoBlock({
+  icon: Icon,
+  title,
+  children,
+}: {
+  icon: React.ElementType
+  title: string
+  children: ReactNode
+}) {
+  return (
+    <div>
+      <div className="flex items-center gap-2 mb-2">
+        <Icon className="w-4 h-4 text-primary shrink-0" />
+        <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+          {title}
+        </h4>
+      </div>
+      <div className="text-sm text-foreground/75 leading-relaxed">{children}</div>
+    </div>
+  )
 }
 
-function reordenarPlataformas(plataformas: Project[], idsDestacados: string[]) {
-  if (idsDestacados.length === 0) return plataformas
-  const destacadas = idsDestacados
-    .map((id) => plataformas.find((p) => p.id === id))
-    .filter((p): p is Project => p !== undefined)
-  const resto = plataformas.filter((p) => !idsDestacados.includes(p.id))
-  return [...destacadas, ...resto]
-}
+function ProjectCarousel({ images, title }: { images: string[]; title: string }) {
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
 
-function useNicho() {
-  const [nicho, setNicho] = useState("general")
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    setNicho(params.get("nicho") || "general")
-  }, [])
-  return nicho
+    if (!api) return
+    const onSelect = () => setCurrent(api.selectedScrollSnap())
+    setCurrent(api.selectedScrollSnap())
+    api.on("select", onSelect)
+    api.on("reInit", onSelect)
+    return () => {
+      api.off("select", onSelect)
+      api.off("reInit", onSelect)
+    }
+  }, [api])
+
+  if (!images.length) return null
+
+  return (
+    <div className="relative">
+      <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
+        <CarouselContent>
+          {images.map((src, i) => (
+            <CarouselItem key={i}>
+              <div className="aspect-video w-full overflow-hidden bg-muted">
+                <img
+                  src={src}
+                  alt={`${title} — ${i + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="left-3 top-1/2 -translate-y-1/2 size-10 bg-black/50 text-white hover:bg-black/70 hover:text-white border-0" />
+        <CarouselNext className="right-3 top-1/2 -translate-y-1/2 size-10 bg-black/50 text-white hover:bg-black/70 hover:text-white border-0" />
+      </Carousel>
+      {images.length > 1 && (
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => api?.scrollTo(i)}
+              aria-label={`Ir a imagen ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                i === current ? "w-5 bg-white" : "w-1.5 bg-white/50 hover:bg-white/70"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  )
 }
 
 function ProjectDialog({
@@ -169,139 +369,119 @@ function ProjectDialog({
   onOpenChange: (open: boolean) => void
   scrollToCalendly: () => void
 }) {
-  const images: string[] = [project.image]
-  if (project.mockImage) images.push(project.mockImage)
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton={false}
-        className="sm:max-w-2xl lg:max-w-3xl gap-0 p-0 max-h-[90vh] overflow-y-auto"
+        className="sm:max-w-3xl lg:max-w-4xl gap-0 p-0 rounded-3xl max-h-[90vh] overflow-y-auto"
       >
         <button
           onClick={() => onOpenChange(false)}
-          className="absolute top-4 right-4 z-10 rounded-full bg-black/60 hover:bg-black/80 text-white p-2 transition-colors"
+          aria-label="Cerrar"
+          className="absolute top-4 right-4 z-20 rounded-full bg-black/60 hover:bg-black/80 text-white p-2 transition-colors cursor-pointer"
         >
-          <X className="w-4 h-4" />
+          <X className="w-5 h-5" />
         </button>
 
-        {images.length > 0 && (
-          <div className={`grid ${images.length > 1 ? "sm:grid-cols-2" : ""} gap-0`}>
-            {images.map((src, i) => (
-              <div key={i} className="aspect-video relative overflow-hidden bg-muted">
-                <img
-                  src={src}
-                  alt={`${project.title} ${i === 0 ? "" : "- Mock"}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        )}
+        <ProjectCarousel images={project.images} title={project.title} />
 
-        <div className="p-6 sm:p-8 space-y-6">
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag, tagIndex) => (
-              <span
-                key={tagIndex}
-                className="px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary font-medium"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
+        <div className="p-6 sm:p-8 space-y-8">
           <div>
-            <DialogTitle className="text-2xl sm:text-3xl font-bold text-foreground">
-              {project.title}
-            </DialogTitle>
-            <DialogDescription className="text-base text-foreground/80 mt-3 leading-relaxed">
-              {project.longDescription}
-            </DialogDescription>
-          </div>
-
-          <div>
-            <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-              Tecnología
-            </h4>
-            <div className="flex flex-wrap gap-x-6 gap-y-2">
-              {Object.entries(project.techSpecs).map(([key, value]) => (
-                <span key={key} className="text-sm text-foreground/70">
-                  <span className="text-muted-foreground">{key}:</span>{" "}
-                  <span className="text-foreground/90 font-medium">{value}</span>
+            <div className="flex flex-wrap gap-2 mb-3">
+              {project.category && (
+                <span className="px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary font-medium">
+                  {project.category}
+                </span>
+              )}
+              {project.status.map((status) => (
+                <span
+                  key={status}
+                  className="px-2.5 py-1 text-xs rounded-full border border-border/60 text-foreground/70 font-medium"
+                >
+                  {status}
                 </span>
               ))}
             </div>
+            <DialogTitle className="text-2xl sm:text-3xl font-bold text-foreground">
+              {project.title}
+            </DialogTitle>
           </div>
 
-          {project.businessCase && (
-            <div className="space-y-5 pt-2 border-t border-border/50">
-              <div>
-                <div className="flex items-start gap-3">
-                  <Lightbulb className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
-                      El problema
-                    </h4>
-                    <p className="text-sm text-foreground/80 leading-relaxed">
-                      {project.businessCase.problem}
-                    </p>
-                  </div>
-                </div>
-              </div>
+          <p className="text-base text-foreground/80 leading-relaxed">
+            {project.description}
+          </p>
 
-              <div>
-                <div className="flex items-start gap-3">
-                  <Wrench className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
-                      Lo que construimos
-                    </h4>
-                    <ul className="space-y-1">
-                      {project.businessCase.built.map((item, i) => (
-                        <li key={i} className="text-sm text-foreground/80 flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
+          <div className="grid sm:grid-cols-2 gap-x-8 gap-y-8">
+            <InfoBlock icon={Lightbulb} title="Problema que resuelve">
+              <p>{project.problem}</p>
+            </InfoBlock>
 
-              <div>
-                <div className="flex items-start gap-3">
-                  <TrendingUp className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
-                      Resultados
-                    </h4>
-                    <ul className="space-y-1">
-                      {project.businessCase.results.map((item, i) => (
-                        <li key={i} className="text-sm text-foreground/80 flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+            <div className="space-y-8">
+              <InfoBlock icon={Globe} title="Alcance geográfico">
+                <p>{project.scope}</p>
+              </InfoBlock>
+              {Object.keys(project.techSpecs).length > 0 && (
+                <InfoBlock icon={Cpu} title="Tecnologías">
+                  <div className="flex flex-col gap-y-2">
+                    {Object.entries(project.techSpecs).map(([key, value]) => (
+                      <span key={key} className="text-sm text-foreground/70">
+                        <span className="text-muted-foreground">{key}:</span>{" "}
+                        <span className="text-foreground/90 font-medium">{value}</span>
+                      </span>
+                    ))}
                   </div>
-                </div>
-              </div>
+                </InfoBlock>
+              )}
             </div>
-          )}
 
-          <div className="pt-2">
+            <InfoBlock icon={Wrench} title="Funcionalidades principales">
+              <ul className="space-y-2">
+                {project.features.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </InfoBlock>
+
+            <InfoBlock icon={TrendingUp} title="Impacto">
+              <ul className="space-y-2">
+                {project.impact.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </InfoBlock>
+          </div>
+
+          <div className="pt-4 border-t border-border/50 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <Button
               onClick={() => {
                 onOpenChange(false)
                 setTimeout(scrollToCalendly, 300)
               }}
               size="lg"
-              className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full"
+              className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group flex-1 sm:flex-none"
             >
-              Agendar mi llamada
+              Agendar llamada
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>
+            {project.links.map((link) => (
+              <Button
+                key={link.label}
+                asChild
+                variant="outline"
+                className="rounded-full px-6 py-6 h-auto text-sm text-foreground/90"
+              >
+                <a href={link.url} target="_blank" rel="noreferrer">
+                  {link.label}
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </Button>
+            ))}
           </div>
         </div>
       </DialogContent>
@@ -310,8 +490,6 @@ function ProjectDialog({
 }
 
 export function CaseStudies() {
-  const nicho = useNicho()
-  const proyectosVisibles = reordenarPlataformas(projects, idsDestacadosPorNicho[nicho] || [])
   const { ref, isVisible } = useScrollAnimation<HTMLElement>()
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [dialogOpen, setDialogOpen] = useState(false)
@@ -343,48 +521,34 @@ export function CaseStudies() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {proyectosVisibles.map((project, index) => (
+          {projects.map((project, index) => (
             <div
-              key={index}
+              key={project.id}
               className={`group rounded-2xl bg-card border border-border/50 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="aspect-video relative overflow-hidden">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-secondary via-muted to-secondary">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10" />
-                    <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-                      [Image Placeholder]
-                    </div>
-                  </div>
-                )}
+                <img
+                  src={project.cover}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
 
               <div className="p-6">
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                {project.category && (
+                  <span className="inline-block px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary font-medium mb-3">
+                    {project.category}
+                  </span>
+                )}
 
                 <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-base text-foreground/80 mb-4">
-                  {project.description}
+                <p className="text-base text-foreground/80 mb-4 line-clamp-3">
+                  {project.summary}
                 </p>
 
                 <Button
@@ -392,7 +556,7 @@ export function CaseStudies() {
                   onClick={() => openProject(project)}
                   className="p-0 h-auto text-primary hover:text-primary/80 hover:bg-transparent group/btn"
                 >
-                  Ver más
+                  Ver más detalles
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </Button>
               </div>
@@ -414,6 +578,7 @@ export function CaseStudies() {
 
       {selectedProject && (
         <ProjectDialog
+          key={selectedProject.id}
           project={selectedProject}
           open={dialogOpen}
           onOpenChange={setDialogOpen}
