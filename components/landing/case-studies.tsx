@@ -41,6 +41,7 @@ interface Project {
   scope: string
   status: string[]
   availability: string
+  orientation: "portrait" | "landscape"
   cover: string
   images: string[]
 }
@@ -75,6 +76,7 @@ const projects: Project[] = [
     scope: "Colombia.",
     status: ["iOS", "Android", "Web"],
     availability: "Disponible en Google Play y App Store",
+    orientation: "portrait",
     cover: "/projects/alianza-1.png",
     images: [
       "/projects/alianza-1.png",
@@ -113,6 +115,7 @@ const projects: Project[] = [
     scope: "Francia.",
     status: ["iOS", "Android"],
     availability: "Disponible en App Store y Google Play",
+    orientation: "portrait",
     cover: "/projects/racingkx-2.png",
     images: [
       "/projects/racingkx-1.png",
@@ -149,6 +152,7 @@ const projects: Project[] = [
     scope: "México — inicia en Aguascalientes, con expansión prevista a todo el país.",
     status: ["iOS", "Android"],
     availability: "Disponible en App Store y Google Play",
+    orientation: "portrait",
     cover: "/projects/ilirox-portada.png",
     images: [
       "/projects/ilirox-portada.png",
@@ -189,6 +193,7 @@ const projects: Project[] = [
     scope: "México — Hermosillo y Zacatecas, con expansión prevista a todo el país.",
     status: ["iOS", "Android"],
     availability: "Disponible en App Store y Google Play",
+    orientation: "portrait",
     cover: "/projects/trueenglish-1.png",
     images: [
       "/projects/trueenglish-1.png",
@@ -224,6 +229,7 @@ const projects: Project[] = [
     scope: "México — Ciudad de México, con planes de expansión.",
     status: ["Web"],
     availability: "Disponible en web",
+    orientation: "landscape",
     cover: "/projects/increciendo-1.png",
     images: [
       "/projects/increciendo-1.png",
@@ -262,6 +268,7 @@ const projects: Project[] = [
     scope: "Reino Unido.",
     status: ["Web"],
     availability: "Disponible en web",
+    orientation: "landscape",
     cover: "/projects/dailysparkle-1.png",
     images: [
       "/projects/dailysparkle-1.png",
@@ -295,7 +302,15 @@ function InfoBlock({
   )
 }
 
-function ProjectCarousel({ images, title }: { images: string[]; title: string }) {
+function ProjectCarousel({
+  images,
+  title,
+  orientation,
+}: {
+  images: string[]
+  title: string
+  orientation: Project["orientation"]
+}) {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
 
@@ -313,34 +328,43 @@ function ProjectCarousel({ images, title }: { images: string[]; title: string })
 
   if (!images.length) return null
 
+  const mobileAspect =
+    orientation === "portrait" ? "aspect-[3/4]" : "aspect-video"
+  const objectPosition =
+    orientation === "portrait" ? "object-top" : "object-center"
+
   return (
-    <div className="relative">
-      <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
-        <CarouselContent>
+    <div className="relative h-full w-full overflow-hidden bg-muted">
+      <Carousel opts={{ loop: true }} setApi={setApi} className="w-full h-full">
+        <CarouselContent viewportClassName="h-full" className="h-full">
           {images.map((src, i) => (
-            <CarouselItem key={i}>
-              <div className="aspect-video w-full overflow-hidden bg-muted">
+            <CarouselItem key={i} className="h-full">
+              <div
+                className={`${mobileAspect} lg:aspect-auto w-full h-full overflow-hidden`}
+              >
                 <img
                   src={src}
                   alt={`${title} — ${i + 1}`}
-                  className="w-full h-full object-cover object-top"
+                  className={`w-full h-full object-cover ${objectPosition}`}
                 />
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-3 top-1/2 -translate-y-1/2 size-10 bg-black/50 text-white hover:bg-black/70 hover:text-white border-0" />
-        <CarouselNext className="right-3 top-1/2 -translate-y-1/2 size-10 bg-black/50 text-white hover:bg-black/70 hover:text-white border-0" />
+        <CarouselPrevious className="left-2 sm:left-3 top-1/2 -translate-y-1/2 size-10 sm:size-11 bg-black/60 text-white hover:bg-black/80 hover:text-white border-0 z-40" />
+        <CarouselNext className="right-2 sm:right-3 top-1/2 -translate-y-1/2 size-10 sm:size-11 bg-black/60 text-white hover:bg-black/80 hover:text-white border-0 z-40" />
       </Carousel>
       {images.length > 1 && (
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-40">
           {images.map((_, i) => (
             <button
               key={i}
               onClick={() => api?.scrollTo(i)}
               aria-label={`Ir a imagen ${i + 1}`}
               className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                i === current ? "w-5 bg-white" : "w-1.5 bg-white/50 hover:bg-white/70"
+                i === current
+                  ? "w-6 bg-white"
+                  : "w-1.5 bg-white/60 hover:bg-white/80"
               }`}
             />
           ))}
@@ -365,106 +389,116 @@ function ProjectDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton={false}
-        className="sm:max-w-3xl lg:max-w-4xl gap-0 p-0 rounded-3xl max-h-[90vh] overflow-y-auto"
+        className="gap-0 p-0 rounded-3xl border-border/60 shadow-2xl sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl max-h-[90vh] overflow-y-auto lg:overflow-hidden lg:h-[80vh]"
       >
         <button
           onClick={() => onOpenChange(false)}
           aria-label="Cerrar"
-          className="absolute top-4 right-4 z-20 rounded-full bg-black/60 hover:bg-black/80 text-white p-2 transition-colors cursor-pointer"
+          className="absolute top-3 right-3 z-50 rounded-full bg-black/70 hover:bg-black/90 text-white p-2.5 transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <ProjectCarousel images={project.images} title={project.title} />
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] lg:h-full">
+          <ProjectCarousel
+            images={project.images}
+            title={project.title}
+            orientation={project.orientation}
+          />
 
-        <div className="p-6 sm:p-8 space-y-8">
-          <div>
-            <div className="flex flex-wrap gap-2 mb-3">
-              {project.category && (
-                <span className="px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary font-medium">
-                  {project.category}
-                </span>
-              )}
-              {project.status.map((status) => (
-                <span
-                  key={status}
-                  className="px-2.5 py-1 text-xs rounded-full border border-border/60 text-foreground/70 font-medium"
-                >
-                  {status}
-                </span>
-              ))}
-            </div>
-            <DialogTitle className="text-2xl sm:text-3xl font-bold text-foreground">
-              {project.title}
-            </DialogTitle>
-          </div>
+          <div className="flex flex-col lg:h-full">
+            <div className="px-6 py-6 sm:px-8 sm:py-8 space-y-8 lg:flex-1 lg:overflow-y-auto">
+              <div>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.category && (
+                    <span className="px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary font-medium">
+                      {project.category}
+                    </span>
+                  )}
+                  {project.status.map((status) => (
+                    <span
+                      key={status}
+                      className="px-2.5 py-1 text-xs rounded-full border border-border/60 text-foreground/70 font-medium"
+                    >
+                      {status}
+                    </span>
+                  ))}
+                </div>
+                <DialogTitle className="text-2xl sm:text-3xl font-bold text-foreground">
+                  {project.title}
+                </DialogTitle>
+              </div>
 
-          <p className="text-base text-foreground/80 leading-relaxed">
-            {project.description}
-          </p>
+              <p className="text-base text-foreground/80 leading-relaxed">
+                {project.description}
+              </p>
 
-          <div className="grid sm:grid-cols-2 gap-x-8 gap-y-8">
-            <InfoBlock icon={Lightbulb} title="Problema que resuelve">
-              <p>{project.problem}</p>
-            </InfoBlock>
-
-            <div className="space-y-8">
-              <InfoBlock icon={Globe} title="Alcance geográfico">
-                <p>{project.scope}</p>
-              </InfoBlock>
-              {Object.keys(project.techSpecs).length > 0 && (
-                <InfoBlock icon={Cpu} title="Tecnologías">
-                  <div className="flex flex-col gap-y-2">
-                    {Object.entries(project.techSpecs).map(([key, value]) => (
-                      <span key={key} className="text-sm text-foreground/70">
-                        <span className="text-muted-foreground">{key}:</span>{" "}
-                        <span className="text-foreground/90 font-medium">{value}</span>
-                      </span>
-                    ))}
-                  </div>
+              <div className="grid sm:grid-cols-2 gap-x-8 gap-y-8">
+                <InfoBlock icon={Lightbulb} title="Problema que resuelve">
+                  <p>{project.problem}</p>
                 </InfoBlock>
-              )}
+
+                <div className="space-y-8">
+                  <InfoBlock icon={Globe} title="Alcance geográfico">
+                    <p>{project.scope}</p>
+                  </InfoBlock>
+                  {Object.keys(project.techSpecs).length > 0 && (
+                    <InfoBlock icon={Cpu} title="Tecnologías">
+                      <div className="flex flex-col gap-y-2">
+                        {Object.entries(project.techSpecs).map(([key, value]) => (
+                          <span key={key} className="text-sm text-foreground/70">
+                            <span className="text-muted-foreground">{key}:</span>{" "}
+                            <span className="text-foreground/90 font-medium">
+                              {value}
+                            </span>
+                          </span>
+                        ))}
+                      </div>
+                    </InfoBlock>
+                  )}
+                </div>
+
+                <InfoBlock icon={Wrench} title="Funcionalidades principales">
+                  <ul className="space-y-2">
+                    {project.features.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </InfoBlock>
+
+                <InfoBlock icon={TrendingUp} title="Impacto">
+                  <ul className="space-y-2">
+                    {project.impact.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </InfoBlock>
+              </div>
             </div>
 
-            <InfoBlock icon={Wrench} title="Funcionalidades principales">
-              <ul className="space-y-2">
-                {project.features.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </InfoBlock>
-
-            <InfoBlock icon={TrendingUp} title="Impacto">
-              <ul className="space-y-2">
-                {project.impact.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </InfoBlock>
-          </div>
-
-          <div className="pt-4 border-t border-border/50 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
-            <p className="flex items-center gap-2 text-sm text-muted-foreground sm:flex-1">
-              <Store className="w-4 h-4 text-primary shrink-0" />
-              {project.availability}
-            </p>
-            <Button
-              onClick={() => {
-                onOpenChange(false)
-                setTimeout(scrollToCalendly, 300)
-              }}
-              size="lg"
-              className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full sm:w-auto"
-            >
-              Agendar llamada
-              <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <div className="shrink-0 px-6 py-5 sm:px-8 border-t border-border/50 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
+              <p className="flex items-center gap-2 text-sm text-muted-foreground sm:flex-1">
+                <Store className="w-4 h-4 text-primary shrink-0" />
+                {project.availability}
+              </p>
+              <Button
+                onClick={() => {
+                  onOpenChange(false)
+                  setTimeout(scrollToCalendly, 300)
+                }}
+                size="lg"
+                className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full sm:w-auto"
+              >
+                Agendar llamada
+                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </div>
           </div>
         </div>
       </DialogContent>
@@ -516,7 +550,11 @@ export function CaseStudies() {
                 <img
                   src={project.cover}
                   alt={project.title}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  className={`w-full h-full object-cover ${
+                    project.orientation === "portrait"
+                      ? "object-top"
+                      : "object-center"
+                  } transition-transform duration-500 group-hover:scale-105`}
                 />
               </div>
 
@@ -535,9 +573,8 @@ export function CaseStudies() {
                 </p>
 
                 <Button
-                  variant="ghost"
                   onClick={() => openProject(project)}
-                  className="p-0 h-auto text-primary hover:text-primary/80 hover:bg-transparent group/btn"
+                  className="w-full rounded-full border border-primary/40 bg-primary/10 text-primary hover:bg-primary/20 font-medium group/btn"
                 >
                   Ver más detalles
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
