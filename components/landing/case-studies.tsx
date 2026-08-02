@@ -25,13 +25,8 @@ import {
   TrendingUp,
   Globe,
   Cpu,
-  ExternalLink,
+  Store,
 } from "lucide-react"
-
-interface ProjectLink {
-  label: string
-  url: string
-}
 
 interface Project {
   id: string
@@ -45,9 +40,9 @@ interface Project {
   techSpecs: Record<string, string>
   scope: string
   status: string[]
+  availability: string
   cover: string
   images: string[]
-  links: ProjectLink[]
 }
 
 const projects: Project[] = [
@@ -79,6 +74,7 @@ const projects: Project[] = [
     },
     scope: "Colombia.",
     status: ["iOS", "Android", "Web"],
+    availability: "Disponible en Google Play y App Store",
     cover: "/projects/alianza-1.png",
     images: [
       "/projects/alianza-1.png",
@@ -86,10 +82,6 @@ const projects: Project[] = [
       "/projects/alianza-3.png",
       "/projects/alianza-4.png",
       "/projects/alianza-5.png",
-    ],
-    links: [
-      { label: "App Store", url: "https://apps.apple.com/pe/app/alianza-capital/id6502927890" },
-      { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.mycompany.alicard" },
     ],
   },
   {
@@ -120,6 +112,7 @@ const projects: Project[] = [
     },
     scope: "Francia.",
     status: ["iOS", "Android"],
+    availability: "Disponible en App Store y Google Play",
     cover: "/projects/racingkx-2.png",
     images: [
       "/projects/racingkx-1.png",
@@ -129,7 +122,6 @@ const projects: Project[] = [
       "/projects/racingkx-5.png",
       "/projects/racingkx-6.png",
     ],
-    links: [],
   },
   {
     id: "ilirox",
@@ -156,6 +148,7 @@ const projects: Project[] = [
     techSpecs: {},
     scope: "México — inicia en Aguascalientes, con expansión prevista a todo el país.",
     status: ["iOS", "Android"],
+    availability: "Disponible en App Store y Google Play",
     cover: "/projects/ilirox-portada.png",
     images: [
       "/projects/ilirox-portada.png",
@@ -167,7 +160,6 @@ const projects: Project[] = [
       "/projects/ilirox-6.png",
       "/projects/ilirox-7.png",
     ],
-    links: [],
   },
   {
     id: "true-english",
@@ -196,6 +188,7 @@ const projects: Project[] = [
     techSpecs: {},
     scope: "México — Hermosillo y Zacatecas, con expansión prevista a todo el país.",
     status: ["iOS", "Android"],
+    availability: "Disponible en App Store y Google Play",
     cover: "/projects/trueenglish-1.png",
     images: [
       "/projects/trueenglish-1.png",
@@ -205,7 +198,6 @@ const projects: Project[] = [
       "/projects/trueenglish-5.png",
       "/projects/trueenglish-6.png",
     ],
-    links: [],
   },
   {
     id: "increciendo-fintech",
@@ -231,6 +223,7 @@ const projects: Project[] = [
     techSpecs: {},
     scope: "México — Ciudad de México, con planes de expansión.",
     status: ["Web"],
+    availability: "Disponible en web",
     cover: "/projects/increciendo-1.png",
     images: [
       "/projects/increciendo-1.png",
@@ -239,7 +232,6 @@ const projects: Project[] = [
       "/projects/increciendo-4.png",
       "/projects/increciendo-5.png",
     ],
-    links: [],
   },
   {
     id: "daily-sparkle",
@@ -269,6 +261,7 @@ const projects: Project[] = [
     },
     scope: "Reino Unido.",
     status: ["Web"],
+    availability: "Disponible en web",
     cover: "/projects/dailysparkle-1.png",
     images: [
       "/projects/dailysparkle-1.png",
@@ -277,7 +270,6 @@ const projects: Project[] = [
       "/projects/dailysparkle-4.png",
       "/projects/dailysparkle-5.png",
     ],
-    links: [{ label: "Sitio Web", url: "https://dailysparkle.co.uk/" }],
   },
 ]
 
@@ -331,7 +323,7 @@ function ProjectCarousel({ images, title }: { images: string[]; title: string })
                 <img
                   src={src}
                   alt={`${title} — ${i + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
             </CarouselItem>
@@ -457,31 +449,22 @@ function ProjectDialog({
             </InfoBlock>
           </div>
 
-          <div className="pt-4 border-t border-border/50 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <div className="pt-4 border-t border-border/50 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
+            <p className="flex items-center gap-2 text-sm text-muted-foreground sm:flex-1">
+              <Store className="w-4 h-4 text-primary shrink-0" />
+              {project.availability}
+            </p>
             <Button
               onClick={() => {
                 onOpenChange(false)
                 setTimeout(scrollToCalendly, 300)
               }}
               size="lg"
-              className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group flex-1 sm:flex-none"
+              className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full sm:w-auto"
             >
               Agendar llamada
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>
-            {project.links.map((link) => (
-              <Button
-                key={link.label}
-                asChild
-                variant="outline"
-                className="rounded-full px-6 py-6 h-auto text-sm text-foreground/90"
-              >
-                <a href={link.url} target="_blank" rel="noreferrer">
-                  {link.label}
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </Button>
-            ))}
           </div>
         </div>
       </DialogContent>
@@ -529,11 +512,11 @@ export function CaseStudies() {
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="aspect-video relative overflow-hidden">
+              <div className="aspect-[16/11.25] relative overflow-hidden">
                 <img
                   src={project.cover}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
