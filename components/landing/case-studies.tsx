@@ -389,12 +389,13 @@ function ProjectDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton={false}
-        className="gap-0 p-0 rounded-3xl border-border/60 shadow-2xl sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl max-h-[90vh] overflow-y-auto lg:overflow-hidden lg:h-[80vh]"
+        overlayClassName="bg-black/40 backdrop-blur-sm"
+        className="gap-0 p-0 rounded-3xl border-zinc-300/50 ring-1 ring-black/70 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5),0_35px_90px_-20px_rgba(0,0,0,0.6)] sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl max-h-[85vh] overflow-y-auto lg:overflow-hidden lg:h-[72vh]"
       >
         <button
           onClick={() => onOpenChange(false)}
           aria-label="Cerrar"
-          className="absolute top-3 right-3 z-50 rounded-full bg-black/70 hover:bg-black/90 text-white p-2.5 transition-colors cursor-pointer"
+          className="absolute top-3 right-3 z-[70] rounded-full bg-white text-black hover:bg-zinc-200 p-3 ring-4 ring-black/40 shadow-2xl transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
