@@ -335,8 +335,8 @@ function ProjectCarousel({
 
   return (
     <div className="relative h-full w-[78%] mx-auto overflow-hidden bg-muted lg:w-full lg:mx-0">
-      <Carousel opts={{ loop: true }} setApi={setApi} className="w-full h-full">
-        <CarouselContent viewportClassName="h-full" className="h-full">
+      <Carousel opts={{ loop: true }} setApi={setApi} className="relative w-full h-full z-0 isolate">
+        <CarouselContent viewportClassName="h-full" className="h-full z-0">
           {images.map((src, i) => (
             <CarouselItem key={i} className="h-full">
               <div
@@ -351,11 +351,11 @@ function ProjectCarousel({
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-2 sm:left-3 top-1/2 -translate-y-1/2 size-10 sm:size-11 bg-black/60 text-white hover:bg-black/80 hover:text-white border-0 z-40" />
-        <CarouselNext className="right-2 sm:right-3 top-1/2 -translate-y-1/2 size-10 sm:size-11 bg-black/60 text-white hover:bg-black/80 hover:text-white border-0 z-40" />
+        <CarouselPrevious className="left-2 sm:left-3 top-1/2 -translate-y-1/2 size-10 sm:size-11 bg-black/60 text-white hover:bg-black/80 hover:text-white border-0 z-50" />
+        <CarouselNext className="right-2 sm:right-3 top-1/2 -translate-y-1/2 size-10 sm:size-11 bg-black/60 text-white hover:bg-black/80 hover:text-white border-0 z-50" />
       </Carousel>
       {images.length > 1 && (
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-40">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-50">
           {images.map((_, i) => (
             <button
               key={i}
