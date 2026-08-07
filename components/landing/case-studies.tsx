@@ -390,7 +390,7 @@ function ProjectDialog({
       <DialogContent
         showCloseButton={false}
         overlayClassName="bg-black/60 sm:bg-black/40 backdrop-blur-md"
-        className="gap-0 p-0 rounded-3xl ring-1 ring-black/70 shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_10px_40px_-10px_rgba(0,0,0,0.55),0_40px_100px_-20px_rgba(0,0,0,0.8)] backdrop-blur-sm sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl max-h-[78vh] sm:max-h-[85vh] overflow-y-auto lg:overflow-hidden lg:h-[72vh] border-[3px] border-white/80 sm:border sm:border-zinc-300/50"
+        className="gap-0 p-0 rounded-3xl ring-1 ring-black/70 shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_10px_40px_-10px_rgba(0,0,0,0.55),0_40px_100px_-20px_rgba(0,0,0,0.8)] backdrop-blur-sm sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl max-h-[84vh] sm:max-h-[88vh] overflow-y-auto lg:overflow-hidden lg:h-[82vh] border-[3px] border-white/80 sm:border sm:border-zinc-300/50"
       >
         <div className="sticky top-0 z-[100] flex items-start justify-end p-3 rounded-t-3xl">
           <button
