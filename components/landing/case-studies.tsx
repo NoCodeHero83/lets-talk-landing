@@ -334,9 +334,9 @@ function ProjectCarousel({
     orientation === "portrait" ? "object-top" : "object-center"
 
   return (
-    <div className="relative h-full w-[78%] mx-auto overflow-hidden bg-muted lg:w-full lg:mx-0">
+    <div className="relative h-full w-[78%] mx-auto overflow-hidden bg-muted lg:w-full lg:mx-0 isolate">
       <Carousel opts={{ loop: true }} setApi={setApi} className="relative w-full h-full z-0 isolate">
-        <CarouselContent viewportClassName="h-full" className="h-full z-0">
+        <CarouselContent viewportClassName="h-full relative z-0" className="h-full">
           {images.map((src, i) => (
             <CarouselItem key={i} className="h-full">
               <div
