@@ -334,9 +334,9 @@ function ProjectCarousel({
     orientation === "portrait" ? "object-top" : "object-center"
 
   return (
-    <div className="relative h-full w-[78%] mx-auto overflow-hidden bg-muted lg:w-full lg:mx-0 isolate">
+    <div className="relative h-full w-[78%] mx-auto isolate lg:w-full lg:mx-0">
       <Carousel opts={{ loop: true }} setApi={setApi} className="relative w-full h-full z-0 isolate">
-        <CarouselContent viewportClassName="h-full relative z-0" className="h-full">
+        <CarouselContent viewportClassName="h-full relative z-0 overflow-hidden" className="h-full">
           {images.map((src, i) => (
             <CarouselItem key={i} className="h-full">
               <div
@@ -351,11 +351,11 @@ function ProjectCarousel({
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-2 sm:left-3 top-1/2 -translate-y-1/2 size-10 sm:size-11 bg-black/60 text-white hover:bg-black/80 hover:text-white border-0 z-50" />
-        <CarouselNext className="right-2 sm:right-3 top-1/2 -translate-y-1/2 size-10 sm:size-11 bg-black/60 text-white hover:bg-black/80 hover:text-white border-0 z-50" />
+        <CarouselPrevious className="left-2 sm:left-3 top-1/2 -translate-y-1/2 size-10 sm:size-11 bg-black/80 text-white hover:bg-black border-0 z-[60] shadow-lg" />
+        <CarouselNext className="right-2 sm:right-3 top-1/2 -translate-y-1/2 size-10 sm:size-11 bg-black/80 text-white hover:bg-black border-0 z-[60] shadow-lg" />
       </Carousel>
       {images.length > 1 && (
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-50">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-black/50 px-2.5 py-2 z-[60]">
           {images.map((_, i) => (
             <button
               key={i}
@@ -364,7 +364,7 @@ function ProjectCarousel({
               className={`h-1.5 rounded-full transition-all cursor-pointer ${
                 i === current
                   ? "w-6 bg-white"
-                  : "w-1.5 bg-white/60 hover:bg-white/80"
+                  : "w-1.5 bg-white/70 hover:bg-white/90"
               }`}
             />
           ))}
