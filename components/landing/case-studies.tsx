@@ -334,7 +334,7 @@ function ProjectCarousel({
     orientation === "portrait" ? "object-top" : "object-center"
 
   return (
-    <div className="relative h-full w-full overflow-hidden bg-muted">
+    <div className="relative h-full w-[78%] mx-auto overflow-hidden bg-muted lg:w-full lg:mx-0">
       <Carousel opts={{ loop: true }} setApi={setApi} className="w-full h-full">
         <CarouselContent viewportClassName="h-full" className="h-full">
           {images.map((src, i) => (
@@ -402,7 +402,7 @@ function ProjectDialog({
           </button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] lg:h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] lg:h-full">
           <ProjectCarousel
             images={project.images}
             title={project.title}
