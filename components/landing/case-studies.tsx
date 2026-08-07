@@ -389,16 +389,18 @@ function ProjectDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton={false}
-        overlayClassName="bg-black/40 backdrop-blur-sm"
-        className="gap-0 p-0 rounded-3xl border-zinc-300/50 ring-1 ring-black/70 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5),0_35px_90px_-20px_rgba(0,0,0,0.6)] sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl max-h-[85vh] overflow-y-auto lg:overflow-hidden lg:h-[72vh]"
+        overlayClassName="bg-black/60 sm:bg-black/40 backdrop-blur-md"
+        className="gap-0 p-0 rounded-3xl ring-1 ring-black/70 shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_10px_40px_-10px_rgba(0,0,0,0.55),0_40px_100px_-20px_rgba(0,0,0,0.8)] backdrop-blur-sm sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl max-h-[78vh] sm:max-h-[85vh] overflow-y-auto lg:overflow-hidden lg:h-[72vh] border-[3px] border-white/80 sm:border sm:border-zinc-300/50"
       >
-        <button
-          onClick={() => onOpenChange(false)}
-          aria-label="Cerrar"
-          className="absolute top-3 right-3 z-[70] rounded-full bg-white text-black hover:bg-zinc-200 p-3 ring-4 ring-black/40 shadow-2xl transition-colors cursor-pointer"
-        >
-          <X className="w-5 h-5" />
-        </button>
+        <div className="sticky top-0 z-[100] flex items-start justify-end p-3 rounded-t-3xl">
+          <button
+            onClick={() => onOpenChange(false)}
+            aria-label="Cerrar"
+            className="flex items-center justify-center rounded-full bg-black text-white hover:bg-black/80 p-3 sm:p-3 ring-4 ring-white/90 shadow-[0_6px_24px_rgba(0,0,0,0.7)] transition-colors cursor-pointer"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] lg:h-full">
           <ProjectCarousel
