@@ -2,9 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { ArrowRight, Check, ChevronDown } from "lucide-react"
-import Script from "next/script"
-import { useState, useEffect, useRef } from "react"
+import { ArrowRight, Check, ChevronDown, Star } from "lucide-react"
+import { useState, useEffect } from "react"
 
 const headlines = {
   fintech: "Tu plataforma fintech funcionando en tu negocio, no solo en una demo.",
@@ -25,18 +24,6 @@ export function Hero() {
   const nicho = useNicho()
   const headline = headlines[nicho as keyof typeof headlines] || headlines.general
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>()
-  const clutchWidgetRef = useRef<HTMLDivElement>(null)
-  const [showClutchFallback, setShowClutchFallback] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const widget = clutchWidgetRef.current
-      if (widget && widget.children.length === 0) {
-        setShowClutchFallback(true)
-      }
-    }, 3000)
-    return () => clearTimeout(timer)
-  }, [])
 
   const scrollToCalendly = () => {
     const calendlySection = document.getElementById("calendly")
@@ -99,30 +86,39 @@ export function Hero() {
           </Button>
         </div>
 
-        <div className="mt-8 flex justify-center">
-          <Script
-            src="https://widget.clutch.co/static/js/widget.js"
-            strategy="afterInteractive"
-            onError={() => setShowClutchFallback(true)}
-          />
-          <div
-            ref={clutchWidgetRef}
-            className="clutch-widget"
-            data-url="https://widget.clutch.co"
-            data-widget-type="1"
-            data-height="45"
-            data-nofollow="false"
-            data-expandifr="true"
-            data-scale="100"
-            data-clutchcompany-id="2474115"
-          />
-          {showClutchFallback && (
-            <img
-              src="/logos/top_clutch.co_it_services_company_peru_2025.svg"
-              alt="Top Clutch.co IT Services Company Peru 2025"
-              className="h-[45px] w-auto"
-            />
-          )}
+        <div className="mt-10 flex flex-col items-center gap-3 animate-fade-in">
+          <a
+            href="https://clutch.co/profile/zerocode"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="group inline-flex items-center gap-3 rounded-full bg-black/40 px-5 py-2.5 text-sm font-medium text-foreground/80 ring-1 ring-border transition-colors hover:bg-black/60 hover:text-foreground"
+          >
+            <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+            Rated on Clutch
+          </a>
+          <a
+            href="https://clutch.co/profile/zerocode"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 rounded-2xl border border-border/30 bg-card px-6 py-3 shadow-lg shadow-black/20 transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/15"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              className="h-6 w-6 flex-shrink-0 text-primary"
+              fill="currentColor"
+            >
+              <path d="M12 0L2.06 7.94v8.12L12 24l9.94-7.94V7.94L12 0z" />
+            </svg>
+            <div className="flex flex-col">
+              <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60">
+                4.8
+              </span>
+              <span className="text-lg font-bold leading-tight text-foreground">
+                3 Reviews on Clutch
+              </span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
