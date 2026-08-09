@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { ArrowRight, Check, ChevronDown, Star } from "lucide-react"
+import { ArrowRight, Check, ChevronDown } from "lucide-react"
 import { useState, useEffect } from "react"
 
 const headlines = {
@@ -88,35 +88,24 @@ export function Hero() {
 
         <div className="mt-10 flex flex-col items-center gap-3 animate-fade-in">
           <a
-            href="https://clutch.co/profile/zerocode"
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            className="group inline-flex items-center gap-3 rounded-full bg-black/40 px-5 py-2.5 text-sm font-medium text-foreground/80 ring-1 ring-border transition-colors hover:bg-black/60 hover:text-foreground"
-          >
-            <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-            Rated on Clutch
-          </a>
-          <a
-            href="https://clutch.co/profile/zerocode"
+            href="https://clutch.co/profile/zerocode-0?utm_source=widget&utm_medium=1&utm_campaign=widget&utm_content=stars&utm_term=cdpn.io#reviews"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 rounded-2xl border border-border/30 bg-card px-6 py-3 shadow-lg shadow-black/20 transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/15"
+            className="inline-flex items-center gap-3 rounded-2xl border border-[rgba(56,189,248,0.15)] bg-[rgba(255,255,255,0.03)] px-5 py-3 transition-all hover:border-[rgba(56,189,248,0.3)]"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              className="h-6 w-6 flex-shrink-0 text-primary"
-              fill="currentColor"
-            >
-              <path d="M12 0L2.06 7.94v8.12L12 24l9.94-7.94V7.94L12 0z" />
-            </svg>
-            <div className="flex flex-col">
-              <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60">
-                4.8
-              </span>
-              <span className="text-lg font-bold leading-tight text-foreground">
-                3 Reviews on Clutch
-              </span>
+            <img src="/logos/clutch-logo.png" alt="Clutch" width={48} height={44} className="object-contain" />
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xl font-bold text-white">4.8</span>
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="size-4 text-[#f0ad4e]" viewBox="0 0 1000 1000" fill="currentColor">
+                      <path d="M450 75L338 312 88 350C46 354 25 417 58 450L238 633 196 896C188 942 238 975 275 954L500 837 725 954C767 975 813 942 804 896L763 633 942 450C975 417 954 358 913 350L663 312 550 75C529 33 471 33 450 75Z"/>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <span className="text-xs text-white/50">Based on 3 Clutch reviews</span>
             </div>
           </a>
         </div>
