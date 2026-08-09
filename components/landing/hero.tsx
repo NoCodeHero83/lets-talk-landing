@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { ArrowRight, Check, ChevronDown } from "lucide-react"
 import Script from "next/script"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 const headlines = {
   fintech: "Tu plataforma fintech funcionando en tu negocio, no solo en una demo.",
@@ -25,6 +25,18 @@ export function Hero() {
   const nicho = useNicho()
   const headline = headlines[nicho as keyof typeof headlines] || headlines.general
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>()
+  const clutchWidgetRef = useRef<HTMLDivElement>(null)
+  const [showClutchFallback, setShowClutchFallback] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const widget = clutchWidgetRef.current
+      if (widget && widget.children.length === 0) {
+        setShowClutchFallback(true)
+      }
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
 
   const scrollToCalendly = () => {
     const calendlySection = document.getElementById("calendly")
@@ -90,9 +102,11 @@ export function Hero() {
         <div className="mt-8 flex justify-center">
           <Script
             src="https://widget.clutch.co/static/js/widget.js"
-            strategy="lazyOnload"
+            strategy="afterInteractive"
+            onError={() => setShowClutchFallback(true)}
           />
           <div
+            ref={clutchWidgetRef}
             className="clutch-widget"
             data-url="https://widget.clutch.co"
             data-widget-type="1"
@@ -102,6 +116,13 @@ export function Hero() {
             data-scale="100"
             data-clutchcompany-id="2474115"
           />
+          {showClutchFallback && (
+            <img
+              src="/logos/top_clutch.co_it_services_company_peru_2025.svg"
+              alt="Top Clutch.co IT Services Company Peru 2025"
+              className="h-[45px] w-auto"
+            />
+          )}
         </div>
       </div>
     </section>
