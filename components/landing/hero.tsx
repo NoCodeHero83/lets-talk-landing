@@ -87,7 +87,7 @@ export function Hero() {
         }`}
       >
         {/* KPIs discretos — social proof, no compite con Hero */}
-        <div className="mb-6 sm:mb-8 flex justify-center">
+        <div className="mt-5 sm:mt-5 mb-6 sm:mb-8 flex justify-center">
           <p className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] sm:text-xs font-medium tracking-[0.14em] uppercase text-white/55">
             <span>30 proyectos</span>
             <span className="h-1 w-1 rounded-full bg-white/25" aria-hidden />
@@ -101,19 +101,19 @@ export function Hero() {
 
 
         <h1
-          className="font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold uppercase leading-[0.95] sm:leading-[0.95] tracking-[-0.03em] sm:tracking-[-0.04em] text-foreground mb-6 text-balance"
+          className="font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold uppercase leading-[1.05] sm:leading-[1.08] tracking-[-0.03em] sm:tracking-[-0.04em] text-foreground mb-6 text-balance"
           style={{ hyphens: "auto", overflowWrap: "anywhere" }}
         >
           {headline}
         </h1>
 
-        <p className="font-sans text-[22px] sm:text-[30px] md:text-[31px] lg:text-[33px] font-normal text-foreground/90 max-w-4xl mx-auto mb-8 sm:mb-10 leading-relaxed text-pretty">
+        <p className="font-sans text-[22px] sm:text-[30px] md:text-[31px] lg:text-[33px] font-normal text-foreground/90 max-w-4xl mx-auto mb-8 sm:mb-10 leading-snug sm:leading-[1.18] text-pretty">
           Lo validamos antes de que comprometas tu inversión y nos quedamos hasta que el negocio funcione.
         </p>
 
         {/* Presentación institucional de la garantía — reemplaza badge promocional */}
         <div className="flex justify-center mb-8 sm:mb-10">
-          <p className="inline-flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 text-xs sm:text-[13px] font-medium tracking-wide text-white/70 border-t border-white/10 pt-4 max-w-2xl">
+          <p className="inline-flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 text-[13px] sm:text-[15px] font-medium tracking-wide text-white/70 border-t border-white/10 pt-4 max-w-2xl">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/80 flex-shrink-0" aria-hidden />
             <span>100% funcional o te devolvemos tu inversión.</span>
           </p>

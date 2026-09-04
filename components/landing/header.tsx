@@ -34,7 +34,7 @@ export function Header() {
   <img 
     src="/logo.png" 
     alt="Zerocode Logo"
-    className="h-[52px] sm:h-[64px] lg:h-[68px] w-auto"
+    className="h-[56px] sm:h-[68px] lg:h-[74px] w-auto"
   />
 </div>
 
