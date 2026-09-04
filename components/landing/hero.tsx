@@ -107,40 +107,33 @@ export function Hero() {
           {headline}
         </h1>
 
-        <p className="font-sans text-[22px] sm:text-[30px] md:text-[31px] lg:text-[33px] font-normal text-foreground/90 max-w-4xl mx-auto mb-5 sm:mb-6 leading-relaxed text-pretty">
-          Lo validamos antes de comprar
-        </p>
-        <p className="font-sans text-base sm:text-lg text-white/60 max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed text-pretty">
-          Nos quedamos hasta que el negocio funcione.
+        <p className="font-sans text-[22px] sm:text-[30px] md:text-[31px] lg:text-[33px] font-normal text-foreground/90 max-w-4xl mx-auto mb-8 sm:mb-10 leading-relaxed text-pretty">
+          Lo validamos antes de que comprometas tu inversión y nos quedamos hasta que el negocio funcione.
         </p>
 
         {/* Presentación institucional de la garantía — reemplaza badge promocional */}
         <div className="flex justify-center mb-8 sm:mb-10">
           <p className="inline-flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 text-xs sm:text-[13px] font-medium tracking-wide text-white/70 border-t border-white/10 pt-4 max-w-2xl">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/80 flex-shrink-0" aria-hidden />
-            <span>100% funcional</span>
-            <span className="text-white/25">—</span>
-            <span className="text-white/55">respaldo con devolución de la inversión</span>
+            <span>100% funcional o te devolvemos tu inversión.</span>
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <Button
             onClick={scrollToCalendly}
-            size="lg"
-            className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full sm:w-auto"
+            className="bg-white hover:bg-white/90 text-black px-6 sm:px-7 py-5 h-11 sm:h-11 text-[15px] sm:text-[15.5px] rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full sm:w-auto"
           >
             Agenda tu llamada
-            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button
             onClick={scrollToShowcase}
             variant="outline"
-            size="lg"
-            className="border-border-white/10 bg-white/5 hover:bg-white/10 text-white backdrop-blur-md px-8 py-6 text-lg rounded-full font-medium transition-all duration-300 hover:border-white/20  hover:scale-[1.02] shadow-lg shadow-black/20 w-full sm:w-auto"
+            className="border-white/10 bg-white/5 hover:bg-white/10 text-white backdrop-blur-md px-6 sm:px-7 py-5 h-11 sm:h-11 text-[15px] sm:text-[15.5px] rounded-full font-medium transition-all duration-300 hover:border-white/20 hover:scale-[1.02] shadow-lg shadow-black/20 w-full sm:w-auto"
           >
             Ver plataformas
-            <ChevronDown className="ml-2 w-5 h-5" />
+            <ChevronDown className="ml-2 w-4 h-4" />
           </Button>
         </div>
 
