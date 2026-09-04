@@ -2,13 +2,13 @@
 
 import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { ArrowRight, Check, ChevronDown } from "lucide-react"
+import { ArrowRight, ChevronDown } from "lucide-react"
 import { useState, useEffect } from "react"
 
 const headlines = {
-  fintech: "Tu plataforma fintech funcionando en tu negocio, no solo en una demo.",
-  salud: "Tu plataforma de salud funcionando en tu negocio, no solo en una demo.",
-  general: "Tu producto digital funcionando en tu negocio, no solo en una demo.",
+  fintech: "TU PLATAFORMA FINTECH FUNCIONA EN TU NEGOCIO, NO SOLO EN UNA DEMO",
+  salud: "TU PLATAFORMA DE SALUD FUNCIONA EN TU NEGOCIO, NO SOLO EN UNA DEMO",
+  general: "TU PRODUCTO DIGITAL FUNCIONA EN TU NEGOCIO, NO SOLO EN UNA DEMO",
 }
 
 function useNicho() {
@@ -36,34 +36,92 @@ export function Hero() {
   }
 
   return (
-    <section className="relative flex items-start justify-center overflow-hidden pt-20 sm:pt-28 pb-16 sm:pb-24 bg-transparent">
+    <section className="relative flex items-start justify-center overflow-hidden pt-20 sm:pt-28 pb-16 sm:pb-24 bg-black">
+      {/* Fondo oscuro premium con efecto glow animado — reutiliza lenguaje visual de Web Final / About */}
+      {/* About usa Ellipse-1-2.png centrado cover + degradado negro/indigo; aquí se replica con overlay estático + glows animados */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        {/* Base: degradado oscuro institucional */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0b14] via-[#0f1228] to-black" />
+        {/* Ellipse overlay de About — baja opacidad para no afectar legibilidad */}
+        <div
+          className="absolute inset-0 opacity-[0.18] mix-blend-screen"
+          style={{
+            backgroundImage: "url('/Ellipse-1-2.png')",
+            backgroundPosition: "center center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        />
+        {/* Glows animados — movimiento lento, will-change-transform para rendimiento */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div
+            className="absolute -top-10 left-1/2 h-[620px] w-[900px] -translate-x-1/2 rounded-full opacity-60 blur-3xl will-change-transform animate-hero-glow-1"
+            style={{
+              background:
+                "radial-gradient(ellipse 62% 56% at 50% 55%, rgba(79,70,229,0.55) 0%, rgba(55,48,200,0.35) 38%, transparent 72%)",
+            }}
+          />
+          <div
+            className="absolute top-[18%] left-[38%] h-[520px] w-[520px] rounded-full opacity-40 blur-3xl will-change-transform animate-hero-glow-2"
+            style={{
+              background:
+                "radial-gradient(ellipse 55% 55% at 50% 50%, rgba(37,99,235,0.45) 0%, rgba(29,78,216,0.22) 48%, transparent 78%)",
+            }}
+          />
+          <div
+            className="absolute top-[28%] right-[14%] h-[460px] w-[560px] rounded-full opacity-35 blur-3xl will-change-transform animate-hero-glow-3"
+            style={{
+              background:
+                "radial-gradient(ellipse 60% 52% at 50% 50%, rgba(124,58,237,0.48) 0%, rgba(91,33,182,0.28) 42%, transparent 76%)",
+            }}
+          />
+        </div>
+        {/* Velo inferior para legibilidad */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent" />
+      </div>
+
       <div
         ref={ref}
         className={`relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="mb-4 sm:mb-5 flex justify-center">
-          <img
-            src="/zerocode-logo-white.png"
-            alt="Zerocode"
-            className="h-24 sm:h-28 md:h-32 w-auto object-contain"
-          />
+        {/* KPIs discretos — social proof, no compite con Hero */}
+        <div className="mb-6 sm:mb-8 flex justify-center">
+          <p className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] sm:text-xs font-medium tracking-[0.14em] uppercase text-white/55">
+            <span>30 proyectos</span>
+            <span className="h-1 w-1 rounded-full bg-white/25" aria-hidden />
+            <span>15 años</span>
+            <span className="h-1 w-1 rounded-full bg-white/25" aria-hidden />
+            <span>10 países</span>
+            <span className="h-1 w-1 rounded-full bg-white/25" aria-hidden />
+            <span>10 personas en el equipo</span>
+          </p>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-6 text-balance">
+
+        <h1
+          className="font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold uppercase leading-[0.95] sm:leading-[0.95] tracking-[-0.03em] sm:tracking-[-0.04em] text-foreground mb-6 text-balance"
+          style={{ hyphens: "auto", overflowWrap: "anywhere" }}
+        >
           {headline}
         </h1>
 
-        <p className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-normal text-foreground max-w-4xl mx-auto mb-8 sm:mb-10 leading-relaxed text-pretty">
-          Lo validamos antes de que comprometas tu inversión y nos quedamos hasta que el negocio funcione.
+        <p className="font-sans text-[22px] sm:text-[30px] md:text-[31px] lg:text-[33px] font-normal text-foreground/90 max-w-4xl mx-auto mb-5 sm:mb-6 leading-relaxed text-pretty">
+          Lo validamos antes de comprar
+        </p>
+        <p className="font-sans text-base sm:text-lg text-white/60 max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed text-pretty">
+          Nos quedamos hasta que el negocio funcione.
         </p>
 
+        {/* Presentación institucional de la garantía — reemplaza badge promocional */}
         <div className="flex justify-center mb-8 sm:mb-10">
-          <span className="inline-flex items-center gap-2 bg-green-500/10 border border-white/20 text-white text-sm sm:text-base font-semibold px-5 py-2 rounded-full">
-            <Check className="w-4 h-4 text-green-400" />
-            100% funcional o te devolvemos tu inversión
-          </span>
+          <p className="inline-flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 text-xs sm:text-[13px] font-medium tracking-wide text-white/70 border-t border-white/10 pt-4 max-w-2xl">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/80 flex-shrink-0" aria-hidden />
+            <span>100% funcional</span>
+            <span className="text-white/25">—</span>
+            <span className="text-white/55">respaldo con devolución de la inversión</span>
+          </p>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

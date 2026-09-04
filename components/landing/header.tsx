@@ -29,12 +29,12 @@ export function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
-<div className="flex items-center gap-2">
+          {/* Logo — ligeramente más grande para mejor balance sin exagerar */}
+ <div className="flex items-center gap-2">
   <img 
     src="/logo.png" 
     alt="Zerocode Logo"
-    className="h-16 w-auto"
+    className="h-[52px] sm:h-[64px] lg:h-[68px] w-auto"
   />
 </div>
 

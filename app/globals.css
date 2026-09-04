@@ -92,8 +92,10 @@
 }
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  /* Homologado a Web Final: Space Grotesk para titulares, Inter para cuerpo */
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+  --font-mono: var(--font-roboto-flex), 'Roboto Flex', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -135,6 +137,9 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
   }
  body {
   color: oklch(0.97 0 0);
@@ -195,6 +200,23 @@ radial-gradient(ellipse 80% 40% at 75% 90%, rgba(37, 99, 235, 0.12) 0%, rgba(37,
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hero glow animado — reutiliza lenguaje visual de Web Final / About (fondo oscuro + luz en movimiento) */
+@keyframes hero-glow-1 {
+  0%, 100% { transform: translate(-50%, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(-48%, -12px) scale(1.04); opacity: 0.72; }
+}
+@keyframes hero-glow-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-10px, 14px) scale(1.06); }
+}
+@keyframes hero-glow-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(12px, -10px) scale(1.05); }
+}
+.animate-hero-glow-1 { animation: hero-glow-1 14s ease-in-out infinite; }
+.animate-hero-glow-2 { animation: hero-glow-2 18s ease-in-out infinite; }
+.animate-hero-glow-3 { animation: hero-glow-3 20s ease-in-out infinite; }
 
 /* Calendly dark mode fixes */
 .calendly-inline-widget {
