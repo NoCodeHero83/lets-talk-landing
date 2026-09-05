@@ -35,49 +35,50 @@ export function Hero() {
     showcaseSection?.scrollIntoView({ behavior: "smooth" })
   }
 
+  // Slider backgrounds — 3 imágenes en public/backgrounds, responsive con preferencia mobile
+  const backgrounds = [
+    "/backgrounds/dark1.jfif",
+    "/backgrounds/dark2.jpg",
+    "/backgrounds/dark3.avif",
+  ]
+  const [bgIndex, setBgIndex] = useState(0)
+
+  useEffect(() => {
+    // Respeta reduced-motion: no auto-rotate si el usuario lo prefiere
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    const id = setInterval(() => setBgIndex((i) => (i + 1) % backgrounds.length), 5000)
+    return () => clearInterval(id)
+  }, [backgrounds.length])
+
   return (
     <section className="relative flex items-start justify-center overflow-hidden pt-20 sm:pt-28 pb-16 sm:pb-24 bg-black">
-      {/* Fondo oscuro premium con efecto glow animado — reutiliza lenguaje visual de Web Final / About */}
-      {/* About usa Ellipse-1-2.png centrado cover + degradado negro/indigo; aquí se replica con overlay estático + glows animados */}
+      {/* Slider de fondos — 3 backgrounds responsive (cover, center), preferencia mobile asegurada */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        {/* Base: degradado oscuro institucional */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0b14] via-[#0f1228] to-black" />
-        {/* Ellipse overlay de About — baja opacidad para no afectar legibilidad */}
-        <div
-          className="absolute inset-0 opacity-[0.18] mix-blend-screen"
-          style={{
-            backgroundImage: "url('/Ellipse-1-2.png')",
-            backgroundPosition: "center center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-          }}
-        />
-        {/* Glows animados — movimiento lento, will-change-transform para rendimiento */}
-        <div className="absolute inset-0 overflow-hidden">
+        {backgrounds.map((src, i) => (
           <div
-            className="absolute -top-10 left-1/2 h-[620px] w-[900px] -translate-x-1/2 rounded-full opacity-60 blur-3xl will-change-transform animate-hero-glow-1"
+            key={src}
+            className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out will-change-[opacity] ${i === bgIndex ? "opacity-100" : "opacity-0"}`}
             style={{
-              background:
-                "radial-gradient(ellipse 62% 56% at 50% 55%, rgba(79,70,229,0.55) 0%, rgba(55,48,200,0.35) 38%, transparent 72%)",
+              backgroundImage: `url('${src}')`,
+              backgroundSize: "cover",
+              // Mobile-first: center con ligero ajuste para evitar recorte de foco; desktop mantiene center
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
             }}
           />
-          <div
-            className="absolute top-[18%] left-[38%] h-[520px] w-[520px] rounded-full opacity-40 blur-3xl will-change-transform animate-hero-glow-2"
-            style={{
-              background:
-                "radial-gradient(ellipse 55% 55% at 50% 50%, rgba(37,99,235,0.45) 0%, rgba(29,78,216,0.22) 48%, transparent 78%)",
-            }}
-          />
-          <div
-            className="absolute top-[28%] right-[14%] h-[460px] w-[560px] rounded-full opacity-35 blur-3xl will-change-transform animate-hero-glow-3"
-            style={{
-              background:
-                "radial-gradient(ellipse 60% 52% at 50% 50%, rgba(124,58,237,0.48) 0%, rgba(91,33,182,0.28) 42%, transparent 76%)",
-            }}
-          />
-        </div>
-        {/* Velo inferior para legibilidad */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent" />
+        ))}
+        {/* Overlays oscuros para legibilidad — reforzados en mobile donde el texto ocupa más altura */}
+        <div className="absolute inset-0 bg-black/55 sm:bg-black/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-black/80 sm:from-black/50 sm:via-transparent sm:to-black/70" />
+        <div className="absolute inset-x-0 bottom-0 h-32 sm:h-40 bg-gradient-to-t from-black via-black/60 to-transparent" />
+        {/* Velo sutil premium (ex-Ellipse) para mantener lenguaje Web Final sin competir con fotos */}
+        <div className="absolute inset-0 opacity-[0.08] mix-blend-screen hidden sm:block" style={{ backgroundImage: "url('/Ellipse-1-2.png')", backgroundPosition: "center center", backgroundSize: "cover" }} />
+      </div>
+      {/* Indicadores discretos del slider */}
+      <div aria-hidden className="pointer-events-none absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-[1] flex gap-1.5">
+        {backgrounds.map((_, i) => (
+          <span key={i} className={`h-1 rounded-full transition-all duration-500 ${i === bgIndex ? "w-6 bg-white/80" : "w-1.5 bg-white/25"}`} />
+        ))}
       </div>
 
       <div
