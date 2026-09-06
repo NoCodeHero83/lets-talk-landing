@@ -9,7 +9,7 @@ import { useState, useEffect } from "react"
 const headlines = {
   fintech: "TU PLATAFORMA FINTECH FUNCIONA EN TU NEGOCIO, NO SOLO EN UNA DEMO",
   salud: "TU PLATAFORMA DE SALUD FUNCIONA EN TU NEGOCIO, NO SOLO EN UNA DEMO",
-  general: "TU PRODUCTO DIGITAL FUNCIONA EN TU NEGOCIO, NO SOLO EN UNA DEMO",
+  general: "TU PRODUCTO DIGITAL FUNCIONANDO EN TU NEGOCIO, NO SOLO EN UNA DEMO",
 }
 
 function useNicho() {
@@ -41,8 +41,8 @@ export function Hero() {
       {/* Fondo fijo dark2 — mobile ajustado para ondas más notorias (menos crop) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 hero-bg-dark2" />
-        {/* Spotlight de site /about — haz blanco diagonal animado, respeta reduced-motion vía globals.css */}
-        <Spotlight className="-left-[54%] -top-[72%] md:-left-[50%] md:-top-[68%] animate-hero-spotlight" fill="white" />
+        {/* Spotlight de site /about — desplazado al medio para que ilumine el headline */}
+        <Spotlight className="-left-[38%] -top-[60%] md:-left-[32%] md:-top-[55%] animate-hero-spotlight" fill="white" />
         {/* Overlays — aligerados en mobile para que las ondas respiren */}
         <div className="absolute inset-0 bg-black/40 sm:bg-black/45" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 sm:from-black/50 sm:via-transparent sm:to-black/70" />
@@ -60,9 +60,9 @@ export function Hero() {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        {/* KPIs discretos — social proof, no compite con Hero */}
+        {/* KPIs discretos — mismo color/tamaño que garantía "100% funcional..." */}
         <div className="mt-[30px] sm:mt-[30px] mb-[34px] sm:mb-[42px] flex justify-center">
-          <p className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] sm:text-xs font-medium tracking-[0.14em] uppercase text-white/55">
+          <p className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[15px] sm:text-[17px] font-medium tracking-[0.14em] uppercase text-white/70">
             <span>30 proyectos</span>
             <span className="h-1 w-1 rounded-full bg-white/25" aria-hidden />
             <span>15 años</span>
@@ -74,13 +74,13 @@ export function Hero() {
         </div>
 
         <h1
-          className="font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold uppercase leading-[1.12] sm:leading-[1.15] tracking-[-0.03em] sm:tracking-[-0.04em] text-foreground mb-6 text-balance"
+          className="font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold uppercase leading-[1.16] sm:leading-[1.19] tracking-[-0.03em] sm:tracking-[-0.04em] text-foreground mb-6 text-balance"
           style={{ hyphens: "auto", overflowWrap: "anywhere" }}
         >
           {headline}
         </h1>
 
-        <p className="font-sans text-[22px] sm:text-[30px] md:text-[31px] lg:text-[33px] font-normal text-foreground/90 max-w-4xl mx-auto mb-8 sm:mb-10 leading-[1.30] sm:leading-[1.12] text-pretty">
+        <p className="font-sans text-[23px] sm:text-[31px] md:text-[32px] lg:text-[34px] font-normal text-foreground/90 max-w-4xl mx-auto mb-8 sm:mb-10 leading-[1.34] sm:leading-[1.16] text-pretty">
           Lo validamos antes de que comprometas tu inversión y nos quedamos hasta que el negocio funcione.
         </p>
 

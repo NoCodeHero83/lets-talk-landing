@@ -65,13 +65,14 @@ export function Process() {
                 {step.title}
               </div>
 
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 mt-2">
-                <step.icon className="w-6 h-6 text-primary" />
+              <div className="flex flex-row items-center gap-3 mt-2 mb-3 sm:flex-col sm:items-start sm:gap-0 sm:mt-2 sm:mb-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 sm:mb-5">
+                  <step.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground sm:mb-2">
+                  {step.heading}
+                </h3>
               </div>
-
-              <h3 className="text-xl font-semibold text-foreground mb-2">
-                {step.heading}
-              </h3>
               <p className="text-lg text-foreground/70 leading-relaxed">
                 {step.description}
               </p>
