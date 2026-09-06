@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { Spotlight } from "@/components/ui/spotlight"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { useState, useEffect } from "react"
@@ -35,50 +36,22 @@ export function Hero() {
     showcaseSection?.scrollIntoView({ behavior: "smooth" })
   }
 
-  // Slider backgrounds — 3 imágenes en public/backgrounds, responsive con preferencia mobile
-  const backgrounds = [
-    "/backgrounds/dark1.jfif",
-    "/backgrounds/dark2.jpg",
-    "/backgrounds/dark3.avif",
-  ]
-  const [bgIndex, setBgIndex] = useState(0)
-
-  useEffect(() => {
-    // Respeta reduced-motion: no auto-rotate si el usuario lo prefiere
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-    const id = setInterval(() => setBgIndex((i) => (i + 1) % backgrounds.length), 5000)
-    return () => clearInterval(id)
-  }, [backgrounds.length])
-
   return (
     <section className="relative flex items-start justify-center overflow-hidden pt-20 sm:pt-28 pb-16 sm:pb-24 bg-black">
-      {/* Slider de fondos — 3 backgrounds responsive (cover, center), preferencia mobile asegurada */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        {backgrounds.map((src, i) => (
-          <div
-            key={src}
-            className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out will-change-[opacity] ${i === bgIndex ? "opacity-100" : "opacity-0"}`}
-            style={{
-              backgroundImage: `url('${src}')`,
-              backgroundSize: "cover",
-              // Mobile-first: center con ligero ajuste para evitar recorte de foco; desktop mantiene center
-              backgroundPosition: "center center",
-              backgroundRepeat: "no-repeat",
-            }}
-          />
-        ))}
-        {/* Overlays oscuros para legibilidad — reforzados en mobile donde el texto ocupa más altura */}
-        <div className="absolute inset-0 bg-black/55 sm:bg-black/45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-black/80 sm:from-black/50 sm:via-transparent sm:to-black/70" />
+      {/* Fondo fijo dark2 — mobile ajustado para ondas más notorias (menos crop) */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 hero-bg-dark2" />
+        {/* Spotlight de site /about — haz blanco diagonal animado, respeta reduced-motion vía globals.css */}
+        <Spotlight className="-left-[54%] -top-[72%] md:-left-[50%] md:-top-[68%] animate-hero-spotlight" fill="white" />
+        {/* Overlays — aligerados en mobile para que las ondas respiren */}
+        <div className="absolute inset-0 bg-black/40 sm:bg-black/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 sm:from-black/50 sm:via-transparent sm:to-black/70" />
         <div className="absolute inset-x-0 bottom-0 h-32 sm:h-40 bg-gradient-to-t from-black via-black/60 to-transparent" />
-        {/* Velo sutil premium (ex-Ellipse) para mantener lenguaje Web Final sin competir con fotos */}
-        <div className="absolute inset-0 opacity-[0.08] mix-blend-screen hidden sm:block" style={{ backgroundImage: "url('/Ellipse-1-2.png')", backgroundPosition: "center center", backgroundSize: "cover" }} />
-      </div>
-      {/* Indicadores discretos del slider */}
-      <div aria-hidden className="pointer-events-none absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-[1] flex gap-1.5">
-        {backgrounds.map((_, i) => (
-          <span key={i} className={`h-1 rounded-full transition-all duration-500 ${i === bgIndex ? "w-6 bg-white/80" : "w-1.5 bg-white/25"}`} />
-        ))}
+        {/* Velo sutil premium */}
+        <div
+          className="absolute inset-0 opacity-[0.08] mix-blend-screen hidden sm:block"
+          style={{ backgroundImage: "url('/Ellipse-1-2.png')", backgroundPosition: "center center", backgroundSize: "cover" }}
+        />
       </div>
 
       <div
@@ -100,7 +73,6 @@ export function Hero() {
           </p>
         </div>
 
-
         <h1
           className="font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold uppercase leading-[1.12] sm:leading-[1.15] tracking-[-0.03em] sm:tracking-[-0.04em] text-foreground mb-6 text-balance"
           style={{ hyphens: "auto", overflowWrap: "anywhere" }}
@@ -112,7 +84,7 @@ export function Hero() {
           Lo validamos antes de que comprometas tu inversión y nos quedamos hasta que el negocio funcione.
         </p>
 
-        {/* Presentación institucional de la garantía — reemplaza badge promocional */}
+        {/* Presentación institucional de la garantía */}
         <div className="flex justify-center mb-8 sm:mb-10">
           <p className="inline-flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 text-[15px] sm:text-[17px] font-medium tracking-wide text-white/70 border-t border-white/10 pt-4 max-w-2xl">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/80 flex-shrink-0" aria-hidden />
@@ -152,7 +124,7 @@ export function Hero() {
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="size-4 text-[#f0ad4e]" viewBox="0 0 1000 1000" fill="currentColor">
-                      <path d="M450 75L338 312 88 350C46 354 25 417 58 450L238 633 196 896C188 942 238 975 275 954L500 837 725 954C767 975 813 942 804 896L763 633 942 450C975 417 954 358 913 350L663 312 550 75C529 33 471 33 450 75Z"/>
+                      <path d="M450 75L338 312 88 350C46 354 25 417 58 450L238 633 196 896C188 942 238 975 275 954L500 837 725 954C767 975 813 942 804 896L763 633 942 450C975 417 954 358 913 350L663 312 550 75C529 33 471 33 450 75Z" />
                     </svg>
                   ))}
                 </div>

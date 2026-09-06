@@ -223,6 +223,35 @@ radial-gradient(ellipse 80% 40% at 75% 90%, rgba(37, 99, 235, 0.12) 0%, rgba(37,
   border-radius: var(--radius);
   overflow: hidden;
 }
+/* Hero spotlight traído de site /about — haz de luz diagonal animado */
+@keyframes heroSpotlight {
+  0%   { transform: translate(0%, -8%) rotate(-3deg) scale(1); opacity: 0.75; }
+  25%  { transform: translate(6%, -5%) rotate(0deg) scale(1.09); opacity: 0.9; }
+  50%  { transform: translate(16%, -3%) rotate(3deg) scale(1.18); opacity: 1; }
+  75%  { transform: translate(6%, -6%) rotate(0deg) scale(1.09); opacity: 0.9; }
+  100% { transform: translate(0%, -8%) rotate(-3deg) scale(1); opacity: 0.75; }
+}
+
+.animate-hero-spotlight {
+  animation: heroSpotlight 9s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Hero dark2 — fijo, con ajuste mobile para ondas más notorias (menos crop) */
+.hero-bg-dark2 {
+  background-image: url('/backgrounds/dark2.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+@media (max-width: 640px) {
+  .hero-bg-dark2 {
+    /* Mantiene cover (evita gaps) pero desplaza el foco hacia arriba-centro donde están las ondas */
+    /* 50% 32% muestra la zona ondulada sin recortar los laterales tanto como center center en portrait */
+    background-position: 50% 32%;
+  }
+}
+
 @keyframes scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
