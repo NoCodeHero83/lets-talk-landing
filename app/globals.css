@@ -223,12 +223,12 @@ radial-gradient(ellipse 80% 40% at 75% 90%, rgba(37, 99, 235, 0.12) 0%, rgba(37,
   border-radius: var(--radius);
   overflow: hidden;
 }
-/* Hero spotlight traído de site /about — haz de luz diagonal animado */
+/* Hero spotlight traído de site /about — haz de luz diagonal animado, drift contenido para mobile */
 @keyframes heroSpotlight {
   0%   { transform: translate(0%, -8%) rotate(-3deg) scale(1); opacity: 0.75; }
-  25%  { transform: translate(6%, -5%) rotate(0deg) scale(1.09); opacity: 0.9; }
-  50%  { transform: translate(16%, -3%) rotate(3deg) scale(1.18); opacity: 1; }
-  75%  { transform: translate(6%, -6%) rotate(0deg) scale(1.09); opacity: 0.9; }
+  25%  { transform: translate(4%, -5%) rotate(-1deg) scale(1.06); opacity: 0.88; }
+  50%  { transform: translate(8%, -4%) rotate(1deg) scale(1.10); opacity: 0.96; }
+  75%  { transform: translate(4%, -6%) rotate(0deg) scale(1.06); opacity: 0.88; }
   100% { transform: translate(0%, -8%) rotate(-3deg) scale(1); opacity: 0.75; }
 }
 

@@ -41,8 +41,8 @@ export function Hero() {
       {/* Fondo fijo dark2 — mobile ajustado para ondas más notorias (menos crop) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 hero-bg-dark2" />
-        {/* Spotlight de site /about — desplazado al medio para que ilumine el headline */}
-        <Spotlight className="-left-[38%] -top-[60%] md:-left-[32%] md:-top-[55%] animate-hero-spotlight" fill="white" />
+        {/* Spotlight — final apunta cerca de "TU INVERSIÓN" (centro-bajo), drift reducido en mobile */}
+        <Spotlight className="-left-[32%] -top-[52%] md:-left-[28%] md:-top-[48%] animate-hero-spotlight" fill="white" />
         {/* Overlays — aligerados en mobile para que las ondas respiren */}
         <div className="absolute inset-0 bg-black/40 sm:bg-black/45" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 sm:from-black/50 sm:via-transparent sm:to-black/70" />
@@ -74,10 +74,28 @@ export function Hero() {
         </div>
 
         <h1
-          className="font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold uppercase leading-[1.16] sm:leading-[1.19] tracking-[-0.03em] sm:tracking-[-0.04em] text-foreground mb-6 text-balance"
-          style={{ hyphens: "auto", overflowWrap: "anywhere" }}
+          className="font-display text-[31px] sm:text-[37px] md:text-[37px] lg:text-[49px] font-bold uppercase leading-[1.16] sm:leading-[1.19] tracking-[-0.03em] sm:tracking-[-0.04em] text-foreground mb-6"
+          style={{ hyphens: "none", overflowWrap: "normal", wordBreak: "keep-all" }}
         >
-          {headline}
+          {nicho === "fintech" ? (
+            <>
+              <span className="block">TU PLATAFORMA FINTECH</span>
+              <span className="block">FUNCIONA EN TU NEGOCIO,</span>
+              <span className="block">NO SOLO EN UNA DEMO</span>
+            </>
+          ) : nicho === "salud" ? (
+            <>
+              <span className="block">TU PLATAFORMA DE SALUD</span>
+              <span className="block">FUNCIONA EN TU NEGOCIO,</span>
+              <span className="block">NO SOLO EN UNA DEMO</span>
+            </>
+          ) : (
+            <>
+              <span className="block">TU PRODUCTO DIGITAL</span>
+              <span className="block">FUNCIONANDO EN TU NEGOCIO,</span>
+              <span className="block">NO SOLO EN UNA DEMO</span>
+            </>
+          )}
         </h1>
 
         <p className="font-sans text-[23px] sm:text-[31px] md:text-[32px] lg:text-[34px] font-normal text-foreground/90 max-w-4xl mx-auto mb-8 sm:mb-10 leading-[1.34] sm:leading-[1.16] text-pretty">
@@ -110,7 +128,7 @@ export function Hero() {
           </Button>
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-3 animate-fade-in">
+        <div className="mt-[35px] flex flex-col items-center gap-3 animate-fade-in">
           <a
             href="https://clutch.co/profile/zerocode-0?utm_source=widget&utm_medium=1&utm_campaign=widget&utm_content=stars&utm_term=cdpn.io#reviews"
             target="_blank"
