@@ -93,6 +93,7 @@ const solutions: Solution[] = [
 function MiniCarousel({ images, title, variant = 'desktop' }: { images: string[]; title: string; variant?: 'mobile' | 'desktop' }) {
   const [current, setCurrent] = useState(0)
   const [hover, setHover] = useState(false)
+  const [touchStartX, setTouchStartX] = useState<number | null>(null)
   const prev = useCallback(() => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1)), [images.length])
   const next = useCallback(() => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1)), [images.length])
 
@@ -104,11 +105,24 @@ function MiniCarousel({ images, title, variant = 'desktop' }: { images: string[]
 
   const isMobile = variant === 'mobile'
 
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStartX(e.touches[0].clientX)
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return
+    const delta = touchStartX - e.changedTouches[0].clientX
+    if (Math.abs(delta) > 50) {
+      if (delta > 0) next()
+      else prev()
+    }
+    setTouchStartX(null)
+  }
+
   return (
     <div
-      className="relative w-full overflow-hidden border border-border/50 bg-[#0a0f1e] shadow-lg"
+      className="relative w-full overflow-hidden border border-border/50 bg-[#0a0f1e] shadow-lg touch-pan-y"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       <div className={`relative w-full overflow-hidden bg-black ${isMobile ? 'aspect-[9/16] max-h-[420px]' : 'aspect-[16/11]'}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -177,7 +191,7 @@ export function FintechSolutions() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            Tres plataformas ya construidas como white-label / SaaS. Desliza y descubre cada solución — sin clicks ocultos.
+            soluciones verificadas white-label
           </p>
         </div>
 
@@ -253,9 +267,7 @@ export function FintechSolutions() {
           </Button>
         </div>
 
-        <p className="mt-4 text-center text-xs text-muted-foreground">
-          Imágenes reales de cada solución — sin mezclar carruseles. Orden numérico respetado.
-        </p>
+
       </div>
     </section>
   )
