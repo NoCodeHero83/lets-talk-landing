@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Spotlight } from "@/components/ui/spotlight"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { useState, useEffect } from "react"
@@ -38,20 +37,15 @@ export function Hero() {
 
   return (
     <section className="relative flex items-start justify-center overflow-hidden pt-20 sm:pt-28 pb-16 sm:pb-24 bg-black">
-      {/* Fondo fijo dark2 — mobile ajustado para ondas más notorias (menos crop) */}
+      {/* Background premium minimalista - coherente con resto de secciones (transparent + cards) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 hero-bg-dark2" />
-        {/* Spotlight — final apunta cerca de "TU INVERSIÓN" (centro-bajo), drift reducido en mobile */}
-        <Spotlight className="-left-[32%] -top-[52%] md:-left-[28%] md:-top-[48%] animate-hero-spotlight" fill="white" />
-        {/* Overlays — aligerados en mobile para que las ondas respiren */}
-        <div className="absolute inset-0 bg-black/40 sm:bg-black/45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 sm:from-black/50 sm:via-transparent sm:to-black/70" />
-        <div className="absolute inset-x-0 bottom-0 h-32 sm:h-40 bg-gradient-to-t from-black via-black/60 to-transparent" />
-        {/* Velo sutil premium */}
-        <div
-          className="absolute inset-0 opacity-[0.08] mix-blend-screen hidden sm:block"
-          style={{ backgroundImage: "url('/Ellipse-1-2.png')", backgroundPosition: "center center", backgroundSize: "cover" }}
-        />
+        {/* Grid sutil muy tenue - mismo lenguaje que hero-1 pero al 3% para no competir */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:6rem_5rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        {/* Glow superior centrado - unico, suave, indigo/violet acorde a --primary */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(99,102,241,0.14),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(124,58,237,0.10),transparent_60%)]" />
+        {/* Fade inferior para transición suave a LogoCarousel (que es bg transparente sobre body black) */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent" />
       </div>
 
       <div
