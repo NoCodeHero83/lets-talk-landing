@@ -41,6 +41,19 @@ export function Hero() {
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Grid sutil muy tenue - mismo lenguaje que hero-1 pero al 3% para no competir */}
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:6rem_5rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        {/* Estrellas sutiles - 10 puntos blancos 1-1.5px twinkle alternado, no compiten con texto */}
+        <div className="absolute inset-0">
+          <span className="absolute rounded-full bg-white animate-star-twinkle" style={{ left: "8%", top: "14%", width: "1.5px", height: "1.5px", animationDelay: "0s", animationDuration: "3.8s" }} />
+          <span className="absolute rounded-full bg-white animate-star-twinkle" style={{ left: "18%", top: "32%", width: "1px", height: "1px", animationDelay: "0.7s", animationDuration: "4.2s" }} />
+          <span className="absolute rounded-full bg-white animate-star-twinkle" style={{ left: "88%", top: "18%", width: "1.5px", height: "1.5px", animationDelay: "1.4s", animationDuration: "3.6s" }} />
+          <span className="absolute rounded-full bg-white animate-star-twinkle" style={{ left: "78%", top: "42%", width: "1px", height: "1px", animationDelay: "2.1s", animationDuration: "4.5s" }} />
+          <span className="absolute rounded-full bg-white animate-star-twinkle" style={{ left: "12%", top: "58%", width: "1px", height: "1px", animationDelay: "0.4s", animationDuration: "3.9s" }} />
+          <span className="absolute rounded-full bg-white animate-star-twinkle" style={{ left: "92%", top: "52%", width: "1.5px", height: "1.5px", animationDelay: "1.1s", animationDuration: "4.1s" }} />
+          <span className="absolute rounded-full bg-white animate-star-twinkle" style={{ left: "6%", top: "78%", width: "1px", height: "1px", animationDelay: "1.8s", animationDuration: "3.7s" }} />
+          <span className="absolute rounded-full bg-white animate-star-twinkle" style={{ left: "94%", top: "78%", width: "1px", height: "1px", animationDelay: "2.4s", animationDuration: "4.3s" }} />
+          <span className="absolute rounded-full bg-white animate-star-twinkle" style={{ left: "28%", top: "8%", width: "1px", height: "1px", animationDelay: "0.9s", animationDuration: "3.5s" }} />
+          <span className="absolute rounded-full bg-white animate-star-twinkle" style={{ left: "68%", top: "12%", width: "1.5px", height: "1.5px", animationDelay: "1.6s", animationDuration: "4.0s" }} />
+        </div>
         {/* Glow superior - más pronunciado pero manteniendo elegancia premium */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_65%_at_50%_-10%,rgba(99,102,241,0.22),transparent_60%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_50%_at_50%_0%,rgba(124,58,237,0.16),transparent_62%)]" />
