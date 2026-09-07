@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Spotlight } from "@/components/ui/spotlight"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { useState, useEffect } from "react"
@@ -37,27 +36,17 @@ export function Hero() {
   }
 
   return (
-    <section className="relative flex items-start justify-center overflow-hidden pt-20 sm:pt-28 pb-16 sm:pb-24 bg-[#070a14]">
-      {/* Fondo background2 — sin grilla, notas azules oscuras, blend final, sin brillo excesivo */}
+    <section className="relative flex items-start justify-center overflow-hidden pt-20 sm:pt-28 pb-16 sm:pb-24 bg-black">
+      {/* Fondo background2 original — recuperado tal cual (efecto horizonte/sol), sin spotlight */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Base + notas azules oscuras como el resto de la página */}
-        <div className="absolute inset-0 bg-[#070a14]" />
-        <div
-          className="absolute inset-0 opacity-90"
-          style={{
-            backgroundImage:
-              "radial-gradient(ellipse 70% 50% at 25% 18%, rgba(37,99,235,0.14) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 82% 55%, rgba(79,70,229,0.12) 0%, transparent 60%), radial-gradient(ellipse 50% 35% at 50% 80%, rgba(37,99,235,0.08) 0%, transparent 65%)",
-          }}
-        />
-        {/* Radial accent sutil inspirado en background2 pero en azul oscuro */}
-        <div className="absolute left-1/2 top-[58%] h-[520px] w-[900px] -translate-x-1/2 rounded-[100%] bg-[radial-gradient(closest-side,rgba(37,99,235,0.10)_65%,transparent_100%)] blur-[1px]" />
-        {/* Spotlight muy sutil — no opaca texto */}
-        <Spotlight className="-left-[32%] -top-[52%] md:-left-[28%] md:-top-[48%] opacity-30 animate-hero-spotlight" fill="white" />
-        {/* Overlay para legibilidad — mate, no brillante */}
-        <div className="absolute inset-0 bg-black/55 sm:bg-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
-        {/* Blend final con el resto de la página */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/80 to-transparent" />
+        {/* Grid BG — original */}
+        <div className="absolute -z-10 inset-0 opacity-60 h-[600px] w-full bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:6rem_5rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        {/* Radial Accent — horizonte/sol, lo más atractivo del widget */}
+        <div className="absolute left-1/2 top-[calc(100%-90px)] lg:top-[calc(100%-150px)] h-[500px] w-[700px] md:h-[500px] md:w-[1100px] lg:h-[750px] lg:w-[140%] -translate-x-1/2 rounded-[100%] border border-[#B48CDE]/15 bg-black bg-[radial-gradient(closest-side,#1a1a2e_82%,#0a0a0f)]" />
+        {/* Blend final para que se funda con el resto de la página (negro) */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black via-black/60 to-transparent" />
+        {/* Velo mate para legibilidad — sin brillo excesivo */}
+        <div className="absolute inset-0 bg-black/35" />
       </div>
 
       <div
