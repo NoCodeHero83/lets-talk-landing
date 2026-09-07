@@ -1,7 +1,9 @@
 "use client"
 
+import * as React from "react"
+import { motion } from "framer-motion"
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { useState, useEffect } from "react"
 
@@ -23,7 +25,6 @@ function useNicho() {
 export function Hero() {
   const nicho = useNicho()
   const headline = headlines[nicho as keyof typeof headlines] || headlines.general
-  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>()
 
   const scrollToCalendly = () => {
     const calendlySection = document.getElementById("calendly")
@@ -38,111 +39,171 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative mx-auto w-full pt-40 px-6 text-center md:px-8 min-h-[calc(100vh-40px)] overflow-hidden bg-[linear-gradient(to_bottom,#fff,#ffffff_50%,#e8e8e8_88%)] dark:bg-[linear-gradient(to_bottom,#000,#0000_30%,#898e8e_78%,#ffffff_99%_50%)] rounded-b-xl"
+      className={cn(
+        "relative z-0 flex min-h-[80vh] w-full flex-col items-center justify-center overflow-hidden rounded-md bg-background",
+      )}
     >
-      {/* Grid BG — tal cual background2 */}
-      <div className="absolute -z-10 inset-0 opacity-80 h-[600px] w-full bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:6rem_5rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-      {/* Radial Accent — tal cual background2 (horizonte/sol) */}
-      <div className="absolute left-1/2 top-[calc(100%-90px)] lg:top-[calc(100%-150px)] h-[500px] w-[700px] md:h-[500px] md:w-[1100px] lg:h-[750px] lg:w-[140%] -translate-x-1/2 rounded-[100%] border-[#B48CDE] bg-white dark:bg-black bg-[radial-gradient(closest-side,#fff_82%,#000000)] dark:bg-[radial-gradient(closest-side,#000_82%,#ffffff)]" />
+      <div className="absolute top-0 isolate z-0 flex w-screen flex-1 items-start justify-center">
+        <div className="absolute top-0 z-50 h-48 w-screen bg-transparent opacity-10 backdrop-blur-md" />
 
-      <div
-        ref={ref}
-        className={`relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-700 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
-        {/* KPIs discretos — mismo color/tamaño que garantía "100% funcional..." */}
-        <div className="mt-[30px] sm:mt-[30px] mb-[34px] sm:mb-[42px] flex justify-center">
-          <p className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[15px] sm:text-[17px] font-medium tracking-[0.14em] uppercase text-white/70">
-            <span>30 proyectos</span>
-            <span className="h-1 w-1 rounded-full bg-white/25" aria-hidden />
-            <span>15 años</span>
-            <span className="h-1 w-1 rounded-full bg-white/25" aria-hidden />
-            <span>10 países</span>
-            <span className="h-1 w-1 rounded-full bg-white/25" aria-hidden />
-            <span>10 personas en el equipo</span>
-          </p>
-        </div>
+        {/* Main glow */}
+        <div className="absolute inset-auto z-50 h-36 w-[28rem] -translate-y-[-30%] rounded-full bg-primary/60 opacity-80 blur-3xl" />
 
-        <h1
-          className="font-display text-[31px] sm:text-[37px] md:text-[37px] lg:text-[49px] font-bold uppercase leading-[1.16] sm:leading-[1.19] tracking-[-0.03em] sm:tracking-[-0.04em] text-foreground mb-6"
-          style={{ hyphens: "none", overflowWrap: "normal", wordBreak: "keep-all" }}
+        {/* Lamp effect */}
+        <motion.div
+          initial={{ width: "8rem" }}
+          viewport={{ once: true }}
+          transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
+          whileInView={{ width: "16rem" }}
+          className="absolute top-0 z-30 h-36 -translate-y-[20%] rounded-full bg-primary/60 blur-2xl"
+        />
+
+        {/* Top line */}
+        <motion.div
+          initial={{ width: "15rem" }}
+          viewport={{ once: true }}
+          transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
+          whileInView={{ width: "30rem" }}
+          className="absolute inset-auto z-50 h-0.5 -translate-y-[-10%] bg-primary/60"
+        />
+
+        {/* Left gradient cone */}
+        <motion.div
+          initial={{ opacity: 0.5, width: "15rem" }}
+          whileInView={{ opacity: 1, width: "30rem" }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          style={{
+            backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
+          }}
+          className="absolute inset-auto right-1/2 h-56 overflow-visible w-[30rem] bg-gradient-conic from-primary/60 via-transparent to-transparent [--conic-position:from_70deg_at_center_top]"
         >
-          {nicho === "fintech" ? (
-            <>
-              <span className="block">TU PLATAFORMA FINTECH</span>
-              <span className="block">FUNCIONA EN TU NEGOCIO,</span>
-              <span className="block">NO SOLO EN UNA DEMO</span>
-            </>
-          ) : nicho === "salud" ? (
-            <>
-              <span className="block">TU PLATAFORMA DE SALUD</span>
-              <span className="block">FUNCIONA EN TU NEGOCIO,</span>
-              <span className="block">NO SOLO EN UNA DEMO</span>
-            </>
-          ) : (
-            <>
-              <span className="block">TU PRODUCTO DIGITAL</span>
-              <span className="block">FUNCIONANDO EN TU NEGOCIO,</span>
-              <span className="block">NO SOLO EN UNA DEMO</span>
-            </>
-          )}
-        </h1>
+          <div className="absolute w-[100%] left-0 bg-background h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
+          <div className="absolute w-40 h-[100%] left-0 bg-background bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
+        </motion.div>
 
-        <p className="font-sans text-[23px] sm:text-[31px] md:text-[32px] lg:text-[34px] font-normal text-foreground/90 max-w-4xl mx-auto mb-8 sm:mb-10 leading-[1.34] sm:leading-[1.16] text-pretty">
-          Lo validamos antes de que comprometas tu inversión y nos quedamos hasta que el negocio funcione.
-        </p>
-
-        {/* Presentación institucional de la garantía */}
-        <div className="flex justify-center mb-8 sm:mb-10">
-          <p className="inline-flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 text-[15px] sm:text-[17px] font-medium tracking-wide text-white/70 border-t border-white/10 pt-4 max-w-2xl">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/80 flex-shrink-0" aria-hidden />
-            <span>100% funcional o te devolvemos tu inversión.</span>
-          </p>
-        </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-          <Button
-            onClick={scrollToCalendly}
-            className="bg-white hover:bg-white/90 text-black px-6 sm:px-7 py-5 h-11 sm:h-11 text-[15px] sm:text-[15.5px] rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full sm:w-auto"
-          >
-            Agenda tu llamada
-            <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </Button>
-          <Button
-            onClick={scrollToShowcase}
-            variant="outline"
-            className="border-white/10 bg-white/5 hover:bg-white/10 text-white backdrop-blur-md px-6 sm:px-7 py-5 h-11 sm:h-11 text-[15px] sm:text-[15.5px] rounded-full font-medium transition-all duration-300 hover:border-white/20 hover:scale-[1.02] shadow-lg shadow-black/20 w-full sm:w-auto"
-          >
-            Ver plataformas
-            <ChevronDown className="ml-2 w-4 h-4" />
-          </Button>
-        </div>
-
-        <div className="mt-[35px] flex flex-col items-center gap-3 animate-fade-in">
-          <a
-            href="https://clutch.co/profile/zerocode-0?utm_source=widget&utm_medium=1&utm_campaign=widget&utm_content=stars&utm_term=cdpn.io#reviews"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 rounded-2xl border border-[rgba(56,189,248,0.15)] bg-[rgba(255,255,255,0.03)] px-5 py-3 transition-all hover:border-[rgba(56,189,248,0.3)]"
-          >
-            <img src="/logos/clutch-logo.png" alt="Clutch" width={48} height={44} className="object-contain" />
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xl font-bold text-white">4.8</span>
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="size-4 text-[#f0ad4e]" viewBox="0 0 1000 1000" fill="currentColor">
-                      <path d="M450 75L338 312 88 350C46 354 25 417 58 450L238 633 196 896C188 942 238 975 275 954L500 837 725 954C767 975 813 942 804 896L763 633 942 450C975 417 954 358 913 350L663 312 550 75C529 33 471 33 450 75Z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <span className="text-xs text-white/50">Based on 3 Clutch reviews</span>
-            </div>
-          </a>
-        </div>
+        {/* Right gradient cone */}
+        <motion.div
+          initial={{ opacity: 0.5, width: "15rem" }}
+          whileInView={{ opacity: 1, width: "30rem" }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          style={{
+            backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
+          }}
+          className="absolute inset-auto left-1/2 h-56 w-[30rem] bg-gradient-conic from-transparent via-transparent to-primary/60 [--conic-position:from_290deg_at_center_top]"
+        >
+          <div className="absolute w-40 h-[100%] right-0 bg-background bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
+          <div className="absolute w-[100%] right-0 bg-background h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
+        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ y: 100, opacity: 0.5 }}
+        viewport={{ once: true }}
+        transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        className="relative z-50 container flex justify-center flex-1 flex-col px-5 md:px-10 gap-4 -translate-y-20"
+      >
+        <div className="flex flex-col items-center text-center space-y-4 w-full max-w-5xl mx-auto">
+          {/* KPIs discretos */}
+          <div className="flex justify-center">
+            <p className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[15px] sm:text-[17px] font-medium tracking-[0.14em] uppercase text-white/70">
+              <span>30 proyectos</span>
+              <span className="h-1 w-1 rounded-full bg-white/25" aria-hidden />
+              <span>15 años</span>
+              <span className="h-1 w-1 rounded-full bg-white/25" aria-hidden />
+              <span>10 países</span>
+              <span className="h-1 w-1 rounded-full bg-white/25" aria-hidden />
+              <span>10 personas en el equipo</span>
+            </p>
+          </div>
+
+          <h1
+            className="font-display text-[31px] sm:text-[37px] md:text-[37px] lg:text-[49px] font-bold uppercase leading-[1.16] sm:leading-[1.19] tracking-[-0.03em] sm:tracking-[-0.04em] text-foreground"
+            style={{ hyphens: "none", overflowWrap: "normal", wordBreak: "keep-all" }}
+          >
+            {nicho === "fintech" ? (
+              <>
+                <span className="block">TU PLATAFORMA FINTECH</span>
+                <span className="block">FUNCIONA EN TU NEGOCIO,</span>
+                <span className="block">NO SOLO EN UNA DEMO</span>
+              </>
+            ) : nicho === "salud" ? (
+              <>
+                <span className="block">TU PLATAFORMA DE SALUD</span>
+                <span className="block">FUNCIONA EN TU NEGOCIO,</span>
+                <span className="block">NO SOLO EN UNA DEMO</span>
+              </>
+            ) : (
+              <>
+                <span className="block">TU PRODUCTO DIGITAL</span>
+                <span className="block">FUNCIONANDO EN TU NEGOCIO,</span>
+                <span className="block">NO SOLO EN UNA DEMO</span>
+              </>
+            )}
+          </h1>
+
+          <p className="font-sans text-[23px] sm:text-[31px] md:text-[32px] lg:text-[34px] font-normal text-foreground/90 max-w-4xl mx-auto leading-[1.34] sm:leading-[1.16] text-pretty">
+            Lo validamos antes de que comprometas tu inversión y nos quedamos hasta que el negocio funcione.
+          </p>
+
+          <div className="flex justify-center">
+            <p className="inline-flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 text-[15px] sm:text-[17px] font-medium tracking-wide text-white/70 border-t border-white/10 pt-4 max-w-2xl">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/80 flex-shrink-0" aria-hidden />
+              <span>100% funcional o te devolvemos tu inversión.</span>
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2">
+            <Button
+              onClick={scrollToCalendly}
+              className="bg-white hover:bg-white/90 text-black px-6 sm:px-7 py-5 h-11 sm:h-11 text-[15px] sm:text-[15.5px] rounded-full font-medium transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group w-full sm:w-auto"
+            >
+              Agenda tu llamada
+              <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+            <Button
+              onClick={scrollToShowcase}
+              variant="outline"
+              className="border-white/10 bg-white/5 hover:bg-white/10 text-white backdrop-blur-md px-6 sm:px-7 py-5 h-11 sm:h-11 text-[15px] sm:text-[15.5px] rounded-full font-medium transition-all duration-300 hover:border-white/20 hover:scale-[1.02] shadow-lg shadow-black/20 w-full sm:w-auto"
+            >
+              Ver plataformas
+              <ChevronDown className="ml-2 w-4 h-4" />
+            </Button>
+          </div>
+
+          <div className="flex flex-col items-center gap-3 pt-2">
+            <a
+              href="https://clutch.co/profile/zerocode-0?utm_source=widget&utm_medium=1&utm_campaign=widget&utm_content=stars&utm_term=cdpn.io#reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 rounded-2xl border border-[rgba(56,189,248,0.15)] bg-[rgba(255,255,255,0.03)] px-5 py-3 transition-all hover:border-[rgba(56,189,248,0.3)]"
+            >
+              <img src="/logos/clutch-logo.png" alt="Clutch" width={48} height={44} className="object-contain" />
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xl font-bold text-white">4.8</span>
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="size-4 text-[#f0ad4e]" viewBox="0 0 1000 1000" fill="currentColor">
+                        <path d="M450 75L338 312 88 350C46 354 25 417 58 450L238 633 196 896C188 942 238 975 275 954L500 837 725 954C767 975 813 942 804 896L763 633 942 450C975 417 954 358 913 350L663 312 550 75C529 33 471 33 450 75Z" />
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+                <span className="text-xs text-white/50">Based on 3 Clutch reviews</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </motion.div>
     </section>
   )
 }

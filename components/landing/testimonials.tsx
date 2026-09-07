@@ -134,14 +134,14 @@ export function Testimonials({ locale = "es" }: { locale?: "es" | "en" } = {}) {
 <div className="flex items-center gap-3">
   <div
     className={`w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary/20 flex-shrink-0 ${
-      testimonial.image?.includes('HulpLogo') ? 'bg-white p-1' : ''
+      testimonial.image?.includes('HulpLogo') ? 'bg-black p-1' : ''
     }`}
   >
     {testimonial.image ? (
       <img
         src={testimonial.image}
         alt={testimonial.name}
-        className={`w-full h-full ${testimonial.image.includes('HulpLogo') ? 'object-contain p-1' : 'object-cover'}`}
+        className={`w-full h-full ${testimonial.image.includes('HulpLogo') ? 'object-contain p-1 bg-black' : 'object-cover'}`}
       />
     ) : (
       <div className="w-full h-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-sm font-medium text-foreground">
