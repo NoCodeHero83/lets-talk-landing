@@ -8,6 +8,7 @@ import { CaseStudies } from "@/components/landing/case-studies"
 import { Trust } from "@/components/landing/trust"
 import { Video } from "@/components/landing/video"
 import { Testimonials } from "@/components/landing/testimonials"
+import { FintechSolutions } from "@/components/landing/fintech-solutions"
 import { FAQ } from "@/components/landing/faq"
 import { FinalCTA } from "@/components/landing/final-cta"
 import { Footer } from "@/components/landing/footer"
@@ -31,6 +32,7 @@ export default function Home() {
       <Showcase />
       <CaseStudies />
       <Testimonials />
+      <FintechSolutions />
       <Video />
       <Trust />
       <FAQ />

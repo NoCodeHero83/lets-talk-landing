@@ -166,42 +166,44 @@ const projects: Project[] = [
     ],
   },
   {
-    id: "true-english",
-    title: "True English",
-    category: "Educación",
+    id: "multiclasificados-effe",
+    title: "Multiclasificados Effe",
+    category: "Marketplace",
     summary:
-      "Una plataforma de aprendizaje de inglés asistida por IA con cursos completos, evaluación automática de pronunciación, retroalimentación personalizada y contenido especializado para cada organización, utilizada actualmente en Hermosillo y Zacatecas.",
+      "Un marketplace de clasificados multipropósito donde los proveedores compran paquetes de avisos por múltiples categorías y países. Desarrollado solo web en menos de 10 semanas con React y Supabase, con un complejo motor de cálculo de precios por paquete —todo asistido por IA— y lanzado con foco en calidad en coleffe.com.",
     description:
-      "True English es una plataforma educativa asistida por Inteligencia Artificial que permite enseñar inglés mediante cursos estructurados. Incluye evaluación automática de pronunciación mediante IA, retroalimentación personalizada, cursos para niños, cursos TOEFL, cursos empresariales y contenido privado para organizaciones. True English opera actualmente en Hermosillo y Zacatecas, con expansión prevista para todo México. Disponible para iOS y Android.",
+      "Multiclasificados Effe es un marketplace de clasificados multipropósito donde los proveedores compran paquetes de avisos para publicar en múltiples categorías, con alcance en varios países del mundo. La plataforma se entregó solo web en tiempo récord —menos de 10 semanas— como frontend en React sobre Supabase, desarrollada íntegramente con flujos asistidos por IA. Su núcleo es un complejo algoritmo de cálculo de precios por paquetes que define costos escalonados por volumen, habilitando una monetización flexible y escalable. Zerocode acompañó a Effe desde el desarrollo hasta el lanzamiento, cuidando especialmente la calidad, estabilidad y la puesta en producción en coleffe.com.",
     problem:
-      "Aprender inglés con cursos genéricos dejaba a los estudiantes sin retroalimentación personalizada ni evaluación automática de pronunciación, dificultando el seguimiento del progreso y sin permitir que las organizaciones entregaran contenido adaptado.",
+      "Los proveedores necesitaban comprar paquetes de avisos de forma flexible en múltiples categorías y geografías, pero el cálculo de precios era demasiado complejo para gestionarse manualmente —bundles, escalas y reglas por país volvían la cotización lenta, propensa a errores e imposible de escalar— sin una base e-commerce lista para el lanzamiento.",
     features: [
-      "Cursos estructurados de inglés.",
-      "Evaluación automática de pronunciación mediante IA.",
-      "Retroalimentación personalizada.",
-      "Cursos para niños.",
-      "Cursos TOEFL.",
-      "Cursos empresariales.",
-      "Contenido privado para organizaciones.",
+      "Marketplace multipropósito solo web con navegación y publicación por múltiples categorías.",
+      "Venta de paquetes de avisos para proveedores con flujo de compra y gestión.",
+      "Complejo motor de precios que calcula costos escalonados por paquete y categoría.",
+      "Arquitectura multi-país lista para escalar en diversos mercados.",
+      "Plataforma React + Supabase desarrollada íntegramente con IA asistida.",
     ],
     impact: [
-      "Plataforma de aprendizaje de inglés asistida por IA en uso activo.",
-      "Operando en Hermosillo y Zacatecas, con expansión nacional prevista.",
-      "Disponible para iOS y Android.",
+      "Lanzado en coleffe.com en menos de 10 semanas, a tiempo para el debut del negocio.",
+      "Precios por paquete complejos automatizados y listos para escalar.",
+      "Plataforma web con foco en calidad, estable para el lanzamiento y el crecimiento.",
+      "Base multi-categoría y multi-país para expansión continua.",
     ],
-    techSpecs: {},
-    scope: "México — Hermosillo y Zacatecas, con expansión prevista a todo el país.",
-    status: ["iOS", "Android"],
-    availability: "Disponible en App Store y Google Play",
-    orientation: "portrait",
-    cover: "/projects/trueenglish-1.png",
+    techSpecs: {
+      "Diseño": "Figma",
+      "Implementación": "React & Supabase",
+      "IA Asistida": "Claude Code, Antigravity, GitHub Copilot",
+    },
+    scope: "Varios países.",
+    status: ["Web"],
+    availability: "Disponible en coleffe.com",
+    orientation: "landscape",
+    cover: "/projects/multiclasificados-1.png",
     images: [
-      "/projects/trueenglish-1.png",
-      "/projects/trueenglish-2.png",
-      "/projects/trueenglish-3.png",
-      "/projects/trueenglish-4.png",
-      "/projects/trueenglish-5.png",
-      "/projects/trueenglish-6.png",
+      "/projects/multiclasificados-1.png",
+      "/projects/multiclasificados-2.png",
+      "/projects/multiclasificados-3.png",
+      "/projects/multiclasificados-4.png",
+      "/projects/multiclasificados-5.png",
     ],
   },
   {
@@ -334,7 +336,7 @@ function ProjectCarousel({
     orientation === "portrait" ? "object-top" : "object-center"
 
   return (
-    <div className="relative h-full w-[78%] mx-auto isolate lg:w-full lg:mx-0">
+    <div className={`relative h-full isolate ${orientation === "portrait" ? "w-[78%] mx-auto" : "w-full mx-0"} lg:w-full lg:mx-0`}>
       <Carousel opts={{ loop: true }} setApi={setApi} className="relative w-full h-full z-0 isolate">
         <CarouselContent viewportClassName="h-full relative z-0 overflow-hidden" className="h-full">
           {images.map((src, i) => (
@@ -549,7 +551,7 @@ export function CaseStudies() {
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="aspect-[16/11.25] relative overflow-hidden">
+              <div className="w-full aspect-[16/11.25] relative overflow-hidden">
                 <img
                   src={project.cover}
                   alt={project.title}

@@ -3,7 +3,7 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Quote } from "lucide-react"
 
-const testimonials = [
+const testimonialsEs = [
   {
     quote: "Zerocode ofrece servicios de desarrollo de software excepcionales. Su equipo es altamente capacitado, cumple con los plazos establecidos y entrega soluciones de gran calidad. Totalmente recomendados.",
     name: "Manuel Montes de Oca",
@@ -25,17 +25,70 @@ const testimonials = [
     company: "Later Life Training",
     image: "/testimonials/Pete.jpeg"
   },
-    {
+  {
     quote: "Estamos desarrollando una aplicación con escalabilidad de nivel bancario para toda Latinoamérica, ofreciendo servicios financieros tradicionales mediante una experiencia de onboarding 100% digital. Transformamos un proceso tradicionalmente complejo en una experiencia simple, rápida y completamente en línea.",
     name: "Sebastián Saenz",
     role: "CEO",
     company: "Alianza Capital",
     image: "/testimonials/Sebastian.png"
+  },
+  {
+    quote: "Zerocode transformó nuestro marketplace de servicios en una plataforma digital escalable. Ampliaron nuestro alcance, digitalizaron las operaciones, aumentaron la capacidad de HWP, optimizaron los costos, incrementaron los ingresos y nos ayudaron a abrir nuevos mercados en toda Colombia.",
+    name: "Matías Schrader",
+    role: "Founder",
+    company: "Hulp",
+    image: "/testimonials/Matias-Schrader.png"
   }
 ]
 
-export function Testimonials() {
+const testimonialsEn = [
+  {
+    quote: "Zerocode provides exceptional software development services! Highly skilled team, timely delivery, and impressive quality. Highly recommended!",
+    name: "Manuel Montes de Oca",
+    role: "CTO",
+    company: "Supra Networks",
+    image: "/testimonials/Manuel.jpeg"
+  },
+  {
+    quote: "Zerocode provided a very efficient and reliable service. The team went above and beyond to deliver top-notch solutions. Impressed with their professionalism.",
+    name: "Alejandro García Soto",
+    role: "CTO",
+    company: "Tok&Go",
+    image: "/testimonials/Alejandro-Garcia.png"
+  },
+  {
+    quote: "Zerocode came in when our website was several months through development. Our previous developer had abandoned us. Zerocode completely transformed our website, and undertook work deemed impossible by our previous developer.",
+    name: "Pete Campbell",
+    role: "Technical Leader",
+    company: "Later Life Training",
+    image: "/testimonials/Pete.jpeg"
+  },
+  {
+    quote: "We're developing an app with banking-level scalability for all of Latin America, offering traditional financial services through a 100% digital onboarding experience. We've transformed the onboarding process into something simple, fast, and completely online.",
+    name: "Sebastián Saenz",
+    role: "CEO",
+    company: "Alianza Capital",
+    image: "/testimonials/Sebastian.png"
+  },
+  {
+    quote: "Zerocode transformed our service marketplace into a scalable digital platform. They expanded our reach, digitalized operations, increased HWP's capacity, optimized costs, grew revenue, and helped us unlock new markets across Colombia.",
+    name: "Matías Schrader",
+    role: "Founder",
+    company: "Hulp",
+    image: "/testimonials/Matias-Schrader.png"
+  }
+]
+
+// Fallback export for backward compatibility
+const testimonials = testimonialsEs
+
+export function Testimonials({ locale = "es" }: { locale?: "es" | "en" } = {}) {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>()
+  const testimonials = locale === "en" ? testimonialsEn : testimonialsEs
+  const heading = locale === "en" ? "What our clients say" : "Lo que dicen nuestros clientes"
+  const subheading = locale === "en"
+    ? "Founders and companies that trusted us to build what their business needed."
+    : "Founders y empresas que confiaron en nosotros para construir lo que su negocio necesitaba."
 
   return (
     <section 
@@ -50,10 +103,10 @@ export function Testimonials() {
           }`}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
-            Lo que dicen nuestros clientes
+            {heading}
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Founders y empresas que confiaron en nosotros para construir lo que su negocio necesitaba.
+            {subheading}
           </p>
         </div>
 
