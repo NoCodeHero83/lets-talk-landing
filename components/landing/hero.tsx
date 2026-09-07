@@ -63,7 +63,7 @@ export function Hero() {
           className="absolute inset-auto z-50 h-0.5 -translate-y-[-10%] bg-primary/60"
         />
 
-        {/* Left gradient cone */}
+        {/* Left gradient cone - fixed for Tailwind v4: explicit conic-gradient */}
         <motion.div
           initial={{ opacity: 0.5, width: "15rem" }}
           whileInView={{ opacity: 1, width: "30rem" }}
@@ -73,15 +73,15 @@ export function Hero() {
             ease: "easeInOut",
           }}
           style={{
-            backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
+            backgroundImage: `conic-gradient(from 70deg at center top, oklch(0.65 0.2 280 / 0.6), transparent 25%, transparent)`,
           }}
-          className="absolute inset-auto right-1/2 h-56 overflow-visible w-[30rem] bg-gradient-conic from-primary/60 via-transparent to-transparent [--conic-position:from_70deg_at_center_top]"
+          className="absolute inset-auto right-1/2 h-56 overflow-visible w-[30rem]"
         >
           <div className="absolute w-[100%] left-0 bg-background h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
           <div className="absolute w-40 h-[100%] left-0 bg-background bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
         </motion.div>
 
-        {/* Right gradient cone */}
+        {/* Right gradient cone - fixed for Tailwind v4 */}
         <motion.div
           initial={{ opacity: 0.5, width: "15rem" }}
           whileInView={{ opacity: 1, width: "30rem" }}
@@ -91,9 +91,9 @@ export function Hero() {
             ease: "easeInOut",
           }}
           style={{
-            backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
+            backgroundImage: `conic-gradient(from 290deg at center top, transparent, transparent 75%, oklch(0.65 0.2 280 / 0.6))`,
           }}
-          className="absolute inset-auto left-1/2 h-56 w-[30rem] bg-gradient-conic from-transparent via-transparent to-primary/60 [--conic-position:from_290deg_at_center_top]"
+          className="absolute inset-auto left-1/2 h-56 w-[30rem]"
         >
           <div className="absolute w-40 h-[100%] right-0 bg-background bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
           <div className="absolute w-[100%] right-0 bg-background h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
