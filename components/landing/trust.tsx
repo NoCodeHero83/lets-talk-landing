@@ -40,6 +40,24 @@ export function Trust() {
           ))}
         </div>
 
+        <div
+          className={`flex flex-wrap items-center justify-center gap-3 mb-16 sm:mb-20 transition-all duration-700 delay-150 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <span className="text-sm font-medium uppercase tracking-wider text-white/60">
+            Verificados por Dun &amp; Bradstreet — DUNS Nr: 751503449
+          </span>
+          <a
+            href="https://www.dnb.com/de-de/upik-en.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium uppercase tracking-wider text-[#38bdf8] underline hover:no-underline"
+          >
+            Verify
+          </a>
+        </div>
+
         {/* Stack en una línea */}
         <div
           className={`text-center mb-12 sm:mb-16 transition-all duration-700 delay-200 ${

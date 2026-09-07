@@ -37,21 +37,27 @@ export function Hero() {
   }
 
   return (
-    <section className="relative flex items-start justify-center overflow-hidden pt-20 sm:pt-28 pb-16 sm:pb-24 bg-black">
-      {/* Fondo fijo dark2 — mobile ajustado para ondas más notorias (menos crop) */}
+    <section className="relative flex items-start justify-center overflow-hidden pt-20 sm:pt-28 pb-16 sm:pb-24 bg-[#070a14]">
+      {/* Fondo background2 — sin grilla, notas azules oscuras, blend final, sin brillo excesivo */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 hero-bg-dark2" />
-        {/* Spotlight — final apunta cerca de "TU INVERSIÓN" (centro-bajo), drift reducido en mobile */}
-        <Spotlight className="-left-[32%] -top-[52%] md:-left-[28%] md:-top-[48%] animate-hero-spotlight" fill="white" />
-        {/* Overlays — aligerados en mobile para que las ondas respiren */}
-        <div className="absolute inset-0 bg-black/40 sm:bg-black/45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 sm:from-black/50 sm:via-transparent sm:to-black/70" />
-        <div className="absolute inset-x-0 bottom-0 h-32 sm:h-40 bg-gradient-to-t from-black via-black/60 to-transparent" />
-        {/* Velo sutil premium */}
+        {/* Base + notas azules oscuras como el resto de la página */}
+        <div className="absolute inset-0 bg-[#070a14]" />
         <div
-          className="absolute inset-0 opacity-[0.08] mix-blend-screen hidden sm:block"
-          style={{ backgroundImage: "url('/Ellipse-1-2.png')", backgroundPosition: "center center", backgroundSize: "cover" }}
+          className="absolute inset-0 opacity-90"
+          style={{
+            backgroundImage:
+              "radial-gradient(ellipse 70% 50% at 25% 18%, rgba(37,99,235,0.14) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 82% 55%, rgba(79,70,229,0.12) 0%, transparent 60%), radial-gradient(ellipse 50% 35% at 50% 80%, rgba(37,99,235,0.08) 0%, transparent 65%)",
+          }}
         />
+        {/* Radial accent sutil inspirado en background2 pero en azul oscuro */}
+        <div className="absolute left-1/2 top-[58%] h-[520px] w-[900px] -translate-x-1/2 rounded-[100%] bg-[radial-gradient(closest-side,rgba(37,99,235,0.10)_65%,transparent_100%)] blur-[1px]" />
+        {/* Spotlight muy sutil — no opaca texto */}
+        <Spotlight className="-left-[32%] -top-[52%] md:-left-[28%] md:-top-[48%] opacity-30 animate-hero-spotlight" fill="white" />
+        {/* Overlay para legibilidad — mate, no brillante */}
+        <div className="absolute inset-0 bg-black/55 sm:bg-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+        {/* Blend final con el resto de la página */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/80 to-transparent" />
       </div>
 
       <div
