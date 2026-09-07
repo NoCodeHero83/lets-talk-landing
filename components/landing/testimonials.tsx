@@ -33,11 +33,11 @@ const testimonialsEs = [
     image: "/testimonials/Sebastian.png"
   },
   {
-    quote: "Zerocode transformó nuestro marketplace de servicios en una plataforma digital escalable. Ampliaron nuestro alcance, digitalizaron las operaciones, aumentaron la capacidad de HWP, optimizaron los costos, incrementaron los ingresos y nos ayudaron a abrir nuevos mercados en toda Colombia.",
-    name: "Matías Schrader",
-    role: "Founder",
-    company: "Hulp",
-    image: "/testimonials/Matias-Schrader.png"
+    quote: "El equipo de ZeroCode nos ha ayudado a convertir nuestra visión en realidad. Su paciencia, agilidad y adaptabilidad han sido fundamentales a lo largo de las muchas iteraciones necesarias para construir herramientas que realmente respaldan nuestras operaciones, las necesidades de nuestros clientes y proveedores, y que evolucionan con nosotros a medida que escalamos.",
+    name: "Hulp Colombia",
+    role: "Cliente",
+    company: "Hulp Colombia",
+    image: "/testimonials/HulpLogo.png"
   }
 ]
 
@@ -71,11 +71,11 @@ const testimonialsEn = [
     image: "/testimonials/Sebastian.png"
   },
   {
-    quote: "Zerocode transformed our service marketplace into a scalable digital platform. They expanded our reach, digitalized operations, increased HWP's capacity, optimized costs, grew revenue, and helped us unlock new markets across Colombia.",
-    name: "Matías Schrader",
-    role: "Founder",
-    company: "Hulp",
-    image: "/testimonials/Matias-Schrader.png"
+    quote: "The ZeroCode team have helped us turn our vision into reality. Their patience, agility, and adaptability have been instrumental throughout the many iterations required to build tools that genuinely support our operations, the needs of our clients and providers, and that evolve with us as we scale.",
+    name: "Hulp Colombia",
+    role: "Client",
+    company: "Hulp Colombia",
+    image: "/testimonials/HulpLogo.png"
   }
 ]
 
@@ -132,12 +132,16 @@ export function Testimonials({ locale = "es" }: { locale?: "es" | "en" } = {}) {
               
               {/* Author */}
 <div className="flex items-center gap-3">
-  <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary/20 flex-shrink-0">
+  <div
+    className={`w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary/20 flex-shrink-0 ${
+      testimonial.image?.includes('HulpLogo') ? 'bg-white p-1' : ''
+    }`}
+  >
     {testimonial.image ? (
       <img
         src={testimonial.image}
         alt={testimonial.name}
-        className="w-full h-full object-cover"
+        className={`w-full h-full ${testimonial.image.includes('HulpLogo') ? 'object-contain p-1' : 'object-cover'}`}
       />
     ) : (
       <div className="w-full h-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-sm font-medium text-foreground">
