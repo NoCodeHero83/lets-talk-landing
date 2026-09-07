@@ -41,11 +41,13 @@ export function Hero() {
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Grid sutil muy tenue - mismo lenguaje que hero-1 pero al 3% para no competir */}
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:6rem_5rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-        {/* Glow superior centrado - unico, suave, indigo/violet acorde a --primary */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(99,102,241,0.14),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(124,58,237,0.10),transparent_60%)]" />
-        {/* Fade inferior para transición suave a LogoCarousel (que es bg transparente sobre body black) */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent" />
+        {/* Glow superior - más pronunciado pero manteniendo elegancia premium */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_65%_at_50%_-10%,rgba(99,102,241,0.22),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_50%_at_50%_0%,rgba(124,58,237,0.16),transparent_62%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_35%_at_50%_5%,rgba(167,139,250,0.10),transparent_65%)]" />
+        {/* Fusión inferior: hero negro se funde con body #000000 + radiales tenues del resto de la página */}
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-black via-black to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-[radial-gradient(ellipse_80%_40%_at_50%_100%,rgba(0,0,0,1),transparent_70%)]" />
       </div>
 
       <div
