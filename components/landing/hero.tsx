@@ -16,7 +16,6 @@ function useNicho() {
 
 export function Hero() {
   const nicho = useNicho()
-  const headline = headlines[nicho as keyof typeof headlines] || headlines.general
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>()
 
   const scrollToCalendly = () => {
