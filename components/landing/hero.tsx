@@ -5,12 +5,6 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { useState, useEffect } from "react"
 
-const headlines = {
-  fintech: "TU PLATAFORMA FINTECH FUNCIONA EN TU NEGOCIO, NO SOLO EN UNA DEMO",
-  salud: "TU PLATAFORMA DE SALUD FUNCIONA EN TU NEGOCIO, NO SOLO EN UNA DEMO",
-  general: "TU PRODUCTO DIGITAL FUNCIONANDO EN TU NEGOCIO, NO SOLO EN UNA DEMO",
-}
-
 function useNicho() {
   const [nicho, setNicho] = useState("general")
   useEffect(() => {
@@ -89,13 +83,13 @@ export function Hero() {
           {nicho === "fintech" ? (
             <>
               <span className="block">TU PLATAFORMA FINTECH</span>
-              <span className="block">FUNCIONA EN TU NEGOCIO,</span>
+              <span className="block">FUNCIONANDO EN TU NEGOCIO,</span>
               <span className="block">NO SOLO EN UNA DEMO</span>
             </>
           ) : nicho === "salud" ? (
             <>
               <span className="block">TU PLATAFORMA DE SALUD</span>
-              <span className="block">FUNCIONA EN TU NEGOCIO,</span>
+              <span className="block">FUNCIONANDO EN TU NEGOCIO,</span>
               <span className="block">NO SOLO EN UNA DEMO</span>
             </>
           ) : (
