@@ -38,10 +38,10 @@ const solutions: Solution[] = [
       "/fintech/app-bancaria/7.webp",
       "/fintech/app-bancaria/8.webp",
       "/fintech/app-bancaria/9.webp",
-      "/fintech/app-bancaria/f3ff1d5b7be (45).png",
-      "/fintech/app-bancaria/f3ff1d5b7be (46).png",
+      "/fintech/app-bancaria/f3ff1d5b7be (45).webp",
+      "/fintech/app-bancaria/f3ff1d5b7be (46).webp",
       "/fintech/app-bancaria/f3ff1d5b7be (47).png",
-      "/fintech/app-bancaria/f3ff1d5b7be (52).png",
+      "/fintech/app-bancaria/f3ff1d5b7be (52).webp",
     ],
   },
   {
