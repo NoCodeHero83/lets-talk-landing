@@ -16,7 +16,7 @@ const testimonialsEs = [
     name: "Alejandro García Soto",
     role: "CTO",
     company: "Tok&Go",
-    image: "/testimonials/Alejandro-Garcia.png"
+    image: "/testimonials/Alejandro-Garcia.webp"
   },
   {
     quote: "Zerocode llegó cuando nuestro sitio web ya llevaba varios meses en desarrollo. Nuestro desarrollador anterior había abandonado el proyecto. El equipo transformó completamente nuestra plataforma y logró implementar funcionalidades que el proveedor previo consideraba imposibles.",
@@ -61,7 +61,7 @@ const testimonialsEn = [
     name: "Alejandro García Soto",
     role: "CTO",
     company: "Tok&Go",
-    image: "/testimonials/Alejandro-Garcia.png"
+    image: "/testimonials/Alejandro-Garcia.webp"
   },
   {
     quote: "Zerocode came in when our website was several months through development. Our previous developer had abandoned us. Zerocode completely transformed our website, and undertook work deemed impossible by our previous developer.",

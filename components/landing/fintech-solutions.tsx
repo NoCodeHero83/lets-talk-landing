@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect, useCallback } from "react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
@@ -19,29 +19,29 @@ const solutions: Solution[] = [
   {
     id: "app-bancaria",
     title: "App Bancaria",
-    subtitle: "App bancaria completa — nivel institución",
+    subtitle: "App bancaria completa â€” nivel instituciÃ³n",
     description:
-      "Una aplicación bancaria profunda para que bancos y entidades gestionen productos y operaciones desde una experiencia digital unificada. Más que una billetera: cubre el ciclo completo del dinero del cliente.",
+      "Una aplicaciÃ³n bancaria profunda para que bancos y entidades gestionen productos y operaciones desde una experiencia digital unificada. MÃ¡s que una billetera: cubre el ciclo completo del dinero del cliente.",
     bullets: [
-      "Créditos, líneas de crédito, ahorro e inversión — con CDT en Colombia",
-      "Depósitos, retiros, saldo y su evolución con intereses diarios o mensuales",
-      "Portal empresarial: convenios, pago de nóminas y gestión de productos financieros",
+      "CrÃ©ditos, lÃ­neas de crÃ©dito, ahorro e inversiÃ³n â€” con CDT en Colombia",
+      "DepÃ³sitos, retiros, saldo y su evoluciÃ³n con intereses diarios o mensuales",
+      "Portal empresarial: convenios, pago de nÃ³minas y gestiÃ³n de productos financieros",
     ],
-    footer: "Solución más completa — ideal para bancos.",
+    footer: "SoluciÃ³n mÃ¡s completa â€” ideal para bancos.",
     images: [
-      "/fintech/app-bancaria/1.png",
-      "/fintech/app-bancaria/2.png",
-      "/fintech/app-bancaria/3.png",
-      "/fintech/app-bancaria/4.png",
-      "/fintech/app-bancaria/5.png",
-      "/fintech/app-bancaria/6.png",
-      "/fintech/app-bancaria/7.png",
-      "/fintech/app-bancaria/8.png",
-      "/fintech/app-bancaria/9.png",
-      "/fintech/app-bancaria/f3ff1d5b7be (45).png",
-      "/fintech/app-bancaria/f3ff1d5b7be (46).png",
+      "/fintech/app-bancaria/1.webp",
+      "/fintech/app-bancaria/2.webp",
+      "/fintech/app-bancaria/3.webp",
+      "/fintech/app-bancaria/4.webp",
+      "/fintech/app-bancaria/5.webp",
+      "/fintech/app-bancaria/6.webp",
+      "/fintech/app-bancaria/7.webp",
+      "/fintech/app-bancaria/8.webp",
+      "/fintech/app-bancaria/9.webp",
+      "/fintech/app-bancaria/f3ff1d5b7be (45).webp",
+      "/fintech/app-bancaria/f3ff1d5b7be (46).webp",
       "/fintech/app-bancaria/f3ff1d5b7be (47).png",
-      "/fintech/app-bancaria/f3ff1d5b7be (52).png",
+      "/fintech/app-bancaria/f3ff1d5b7be (52).webp",
     ],
   },
   {
@@ -49,48 +49,58 @@ const solutions: Solution[] = [
     title: "Billetera Virtual",
     subtitle: "White-label lista para lanzar con tu marca",
     description:
-      "Solución white-label ya desarrollada sobre React Native y Supabase. El usuario opera dinero de punta a punta y tú la expones vía API.",
+      "SoluciÃ³n white-label ya desarrollada sobre React Native y Supabase. El usuario opera dinero de punta a punta y tÃº la expones vÃ­a API.",
     bullets: [
       "Depositar, retirar, transferir entre usuarios y transferencias bancarias",
-      "Comprar y mantener cripto dentro de la billetera, historial y gestión de saldo",
-      "En Argentina: CBU, CVU, Alias y otros mecanismos locales según integración",
+      "Comprar y mantener cripto dentro de la billetera, historial y gestiÃ³n de saldo",
+      "En Argentina: CBU, CVU, Alias y otros mecanismos locales segÃºn integraciÃ³n",
     ],
-    footer: "Ya lista — web + Apple App Store y Google Play. KYC vía Truora / Truework.",
+    footer: "Ya lista â€” web + Apple App Store y Google Play. KYC vÃ­a Truora / Truework.",
     images: [
-      "/fintech/billetera/1.png",
-      "/fintech/billetera/2.png",
-      "/fintech/billetera/3.png",
-      "/fintech/billetera/4.png",
-      "/fintech/billetera/5.png",
-      "/fintech/billetera/6.png",
-      "/fintech/billetera/7.png",
+      "/fintech/billetera/1.webp",
+      "/fintech/billetera/2.webp",
+      "/fintech/billetera/3.webp",
+      "/fintech/billetera/4.webp",
+      "/fintech/billetera/5.webp",
+      "/fintech/billetera/6.webp",
+      "/fintech/billetera/7.webp",
       "/fintech/billetera/f3ff1d5b7be (38).png",
     ],
   },
   {
     id: "core",
-    title: "Core Bancario y Fintech Multipropósito",
-    subtitle: "Infraestructura y operación financiera a escala",
+    title: "Core Bancario y Fintech MultipropÃ³sito",
+    subtitle: "Infraestructura y operaciÃ³n financiera a escala",
     description:
-      "Plataforma que combina core bancario con capa fintech multipropósito: cuentas, aprobaciones, cobranzas masivas y compliance en un solo lugar.",
+      "Plataforma que combina core bancario con capa fintech multipropÃ³sito: cuentas, aprobaciones, cobranzas masivas y compliance en un solo lugar.",
     bullets: [
-      "Cuentas bancarias, múltiples por usuario, ahorro, inversión, créditos y operaciones — con roles, OTP y flujos de aprobación",
+      "Cuentas bancarias, mÃºltiples por usuario, ahorro, inversiÃ³n, crÃ©ditos y operaciones â€” con roles, OTP y flujos de aprobaciÃ³n",
       "Subcuentas con saldo independiente, links de pago masivos y cobranzas masivas (consorcios, colegios), impuestos y comisiones",
-      "Alertas, bloqueos y reglas por comportamiento; detección de operaciones fuera de parámetro y compliance/KYC",
+      "Alertas, bloqueos y reglas por comportamiento; detecciÃ³n de operaciones fuera de parÃ¡metro y compliance/KYC",
     ],
-    footer: "KYC y validación de identidad incluidos como capacidad existente, sin integraciones inventadas.",
+    footer: "KYC y validaciÃ³n de identidad incluidos como capacidad existente, sin integraciones inventadas.",
     images: [
-      "/fintech/core/1.png",
-      "/fintech/core/2.png",
-      "/fintech/core/3.png",
-      "/fintech/core/4.png",
-      "/fintech/core/5.png",
-      "/fintech/core/6.png",
+      "/fintech/core/1.webp",
+      "/fintech/core/2.webp",
+      "/fintech/core/3.webp",
+      "/fintech/core/4.webp",
+      "/fintech/core/5.webp",
+      "/fintech/core/6.webp",
     ],
   },
 ]
 
-function MiniCarousel({ images, title, variant = 'desktop' }: { images: string[]; title: string; variant?: 'mobile' | 'desktop' }) {
+function MiniCarousel({
+  images,
+  title,
+  variant = 'desktop',
+  isVisible,
+}: {
+  images: string[]
+  title: string
+  variant?: 'mobile' | 'desktop'
+  isVisible: boolean
+}) {
   const [current, setCurrent] = useState(0)
   const [hover, setHover] = useState(false)
   const [touchStartX, setTouchStartX] = useState<number | null>(null)
@@ -98,10 +108,10 @@ function MiniCarousel({ images, title, variant = 'desktop' }: { images: string[]
   const next = useCallback(() => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1)), [images.length])
 
   useEffect(() => {
-    if (images.length <= 1 || hover) return
+    if (images.length <= 1 || hover || !isVisible) return
     const id = setInterval(next, 4500)
     return () => clearInterval(id)
-  }, [next, images.length, hover])
+  }, [next, images.length, hover, isVisible])
 
   const isMobile = variant === 'mobile'
 
@@ -159,7 +169,9 @@ function MiniCarousel({ images, title, variant = 'desktop' }: { images: string[]
 }
 
 export function FintechSolutions() {
-  const { ref, isVisible } = useScrollAnimation<HTMLElement>()
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>({
+    triggerOnce: false,
+  })
 
   const scrollToCalendly = () => {
     const el = document.getElementById("calendly")
@@ -169,7 +181,7 @@ export function FintechSolutions() {
   return (
     <section ref={ref} className="py-16 sm:py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header — centered with premium scroll animation */}
+        {/* Header â€” centered with premium scroll animation */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div
             className={`inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary transition-all duration-700 ease-out ${
@@ -195,7 +207,7 @@ export function FintechSolutions() {
           </p>
         </div>
 
-        {/* Stacked solutions — compact, scroll-driven (no tabs) */}
+        {/* Stacked solutions â€” compact, scroll-driven (no tabs) */}
         <div className="space-y-6">
           {solutions.map((solution, idx) => (
             <div key={solution.id}>
@@ -230,13 +242,13 @@ export function FintechSolutions() {
                   </div>
 
                   <div className="bg-secondary/30 p-3 sm:p-5 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-border/50">
-                    <MiniCarousel
+                    <MiniCarousel isVisible={isVisible}
                       images={solution.images}
                       title={solution.title}
                       variant={solution.id === 'core' ? 'desktop' : 'mobile'}
                     />
                     <p className="mt-2 text-center text-[10px] uppercase tracking-widest text-muted-foreground">
-                      {solution.images.length} pantallas • 1 → {solution.images.length}
+                      {solution.images.length} pantallas â€¢ 1 â†’ {solution.images.length}
                     </p>
                   </div>
                 </div>
@@ -272,3 +284,4 @@ export function FintechSolutions() {
     </section>
   )
 }
+
